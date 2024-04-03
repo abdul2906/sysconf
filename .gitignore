@@ -1,5 +1,1 @@
-nixos/result
-pw
-.stfolder
-privkey
-privpsk
+secrets/
