@@ -5,6 +5,7 @@
     ./hardware/workstation.nix
     ./persist/workstation.nix
     ../wm/xmonad.nix
+    ../packages/sets/basic.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -66,14 +67,7 @@
 
   # Todo: Move these packages out in the correct files.
   environment.systemPackages = with pkgs; [
-    fastfetch
     neovim
-    firefox
-    rofi
-    wget
-    unzip
-    git
-    tree
   ];
 
   system.stateVersion = "23.11";

@@ -13,5 +13,16 @@
     hashedPasswordFile = "/nix/config/secrets/hu/pass";
   };
 
-  # Todo: home-manager configuration
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = false;
+  home-manager.users.hu = { pkgs, ... }: {
+    home.username = "hu";
+    home.homeDirectory = "/home/hu";
+    home.stateVersion = config.system.stateVersion;
+
+    imports = [
+      ./packages/git.nix
+      ./packages/tmux.nix
+    ];
+  };
 }

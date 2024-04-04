@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ../packages/sets/x.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     xmobar
     flameshot
