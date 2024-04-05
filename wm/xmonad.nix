@@ -22,12 +22,27 @@
       options = "eurosign:e";
     };
 
+    libinput.enable = true;
+
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
+      extraPackages = hp: [
+        hp.dbus
+	hp.xmonad-contrib
+	hp.monad-logger
+      ];
     };
   };
 
-  # Todo: Get gnome-keyring working properly
   services.gnome.gnome-keyring.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config.common.default = "*";
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+  };
 }

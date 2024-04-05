@@ -4,7 +4,7 @@
   imports = [
     ./hardware/workstation.nix
     ./persist/workstation.nix
-    ../wm/xmonad.nix
+    ../wm/plasma.nix
     ../packages/sets/basic.nix
   ];
 

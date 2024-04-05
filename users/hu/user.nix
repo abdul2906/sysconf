@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ../../packages/sets/communication.nix
+    ../../packages/sets/games.nix
+  ];
+
   programs.zsh.enable = true;
   environment.variables = {
     ZDOTDIR = "${config.users.users.hu.home}/.config/zsh";

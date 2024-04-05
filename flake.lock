@@ -1,8 +1,43 @@
 {
   "nodes": {
+    "aagl": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1712185015,
+        "narHash": "sha256-mL3VSJRkyDJbMh/QqUeOhGOsEOTS7Jw9Tqw4fM+VjB4=",
+        "owner": "ezKEa",
+        "repo": "aagl-gtk-on-nix",
+        "rev": "1dbb1c233a249e8cbc03907e965bd2a48d880262",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ezKEa",
+        "repo": "aagl-gtk-on-nix",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1712212014,
@@ -35,6 +70,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1711668574,
+        "narHash": "sha256-u1dfs0ASQIEr1icTVrsKwg2xToIpn7ZXxW3RHfHxshg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "219951b495fc2eac67b1456824cc1ec1fd2ee659",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1711703276,
         "narHash": "sha256-iMUFArF0WCatKK6RzfUJknjem0H9m4KgorO/p3Dopkk=",
         "owner": "NixOS",
@@ -49,7 +100,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1712026416,
         "narHash": "sha256-N/3VR/9e1NlN49p7kCiATiEY6Tzdo+CbrAG8kqCQKcI=",
@@ -65,9 +116,10 @@
     },
     "root": {
       "inputs": {
+        "aagl": "aagl",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       }
     }
   },
