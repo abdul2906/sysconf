@@ -1,15 +1,14 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
     ../../packages/sets/communication.nix
     ../../packages/sets/games.nix
+    ./persist.nix
+    ./packages/stylix.nix
+    ./packages/nh.nix
+    ./packages/zsh/zsh.nix
   ];
-
-  programs.zsh.enable = true;
-  environment.variables = {
-    ZDOTDIR = "${config.users.users.hu.home}/.config/zsh";
-  };
 
   users.users.hu = {
     isNormalUser = true;
@@ -18,16 +17,29 @@
     hashedPasswordFile = "/nix/config/secrets/hu/pass";
   };
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = false;
-  home-manager.users.hu = { pkgs, ... }: {
-    home.username = "hu";
-    home.homeDirectory = "/home/hu";
-    home.stateVersion = config.system.stateVersion;
+  # TODO: Figure out a way to run scripts with the user session as a systemd service
 
-    imports = [
-      ./packages/git.nix
-      ./packages/tmux.nix
-    ];
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.hu = {
+      home.username = "hu";
+      home.homeDirectory = "/home/hu";
+      home.stateVersion = config.system.stateVersion;
+
+      imports = [
+        ./packages/zsh/zsh-home.nix
+        ./packages/git.nix
+        # ./packages/tmux.nix
+        ./packages/hyprland.nix
+        ./packages/foot.nix
+        ./packages/firefox.nix
+        ./packages/rofi.nix
+        ./packages/dunst.nix
+        ./packages/nvim/neovim.nix
+        # ./packages/ags/ags.nix
+      ];
+    };
   };
 }
+

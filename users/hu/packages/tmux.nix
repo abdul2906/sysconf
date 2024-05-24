@@ -1,6 +1,7 @@
-{ pkgs, ... }: 
+{ ... }: 
 
 {
+  # TODO: Port changes over from dots and streamline workflow
   programs.tmux = {
     enable = true;
     prefix = "C-Space";
