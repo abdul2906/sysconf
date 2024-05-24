@@ -32,5 +32,12 @@
   # TODO: switch out the display manager for a tui based one
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+  };
 }
 
