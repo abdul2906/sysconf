@@ -1,8 +1,8 @@
-{ config, lib, pkgs, impermanence, ... }:
+{ ... }:
 
 {
   environment.persistence."/nix/persist" = {
-    hideMounts = false;
+    hideMounts = true;
     directories = [
       "/var/log"
       "/var/lib/nixos"
@@ -19,3 +19,4 @@
     ];
   };
 }
+

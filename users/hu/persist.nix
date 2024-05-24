@@ -1,4 +1,4 @@
-{ pkgs, inputs, impermanence, ... }:
+{ ... }:
 
 {
   environment.persistence."/nix/persist".users.hu = {
@@ -31,7 +31,7 @@
       ".local/share/nvim"
       ".local/state/nvim"
       ".steam"
-      ".local/share/steam"
+      ".local/share/Steam"
     ];
     files = [
       ".mozilla/firefox/shaga/places.sqlite"
