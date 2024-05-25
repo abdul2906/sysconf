@@ -23,6 +23,7 @@
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     NIXOS_OZONE_WL = 1; # TODO: This doesn't work. Fix it
+    WLR_DRM_NO_ATOMIC = 1;
   };
 
   programs.hyprland.enable = true;

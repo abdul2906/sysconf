@@ -16,7 +16,7 @@
     device = "nodev";
     gfxmodeEfi = "1920x1080";
   };
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   boot.supportedFilesystems = [ "btrfs" "xfs" ];
 
   networking = {

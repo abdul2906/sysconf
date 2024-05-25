@@ -21,6 +21,7 @@
       gaps_out = 10;
       border_size = 1;
       layout = "master";
+      allow_tearing = true;
     };
 
     master = {
