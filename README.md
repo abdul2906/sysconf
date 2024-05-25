@@ -8,7 +8,7 @@ modify and share this configuration to your heart's content, no attribution requ
 ## Screenshots
 [Wallpaper](https://www.deviantart.com/view/279239085) modified with [gruvbox-factory](https://github.com/paulopacitti/gruvbox-factory).  
 
-todo
+![Screeenshot](assets/screenshot.png)
 
 ## Layout
 ```
