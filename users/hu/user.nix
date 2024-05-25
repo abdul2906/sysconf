@@ -35,9 +35,8 @@
         ./packages/foot.nix
         ./packages/firefox.nix
         ./packages/rofi.nix
-        ./packages/dunst.nix
         ./packages/nvim/neovim.nix
-        # ./packages/ags/ags.nix
+        ./packages/ags/ags.nix
       ];
     };
   };

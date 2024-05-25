@@ -80,6 +80,10 @@
       "$mod SHIFT, 8, movetoworkspace, 8"
       "$mod SHIFT, 9, movetoworkspace, 9"
     ];
+
+    exec-once = [
+      "ags"
+    ];
   };
 
   services.hyprpaper = {
