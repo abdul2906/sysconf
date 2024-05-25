@@ -17,7 +17,7 @@
   # TODO: Use KDE portal features for file pickers and popups
   # TODO: Add missing utilities for taking screenshots, recording, etc...
 
-  environment.variables = {
+  environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
     XDG_SESSION_TYPE = "wayland";
     GBM_BACKEND = "nvidia-drm";
