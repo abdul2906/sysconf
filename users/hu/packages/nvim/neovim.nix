@@ -7,6 +7,7 @@
     extraPackages = with pkgs; [
       lua-language-server
       nodePackages.intelephense
+      nodePackages.typescript-language-server
       clang-tools
       ripgrep
       nil
