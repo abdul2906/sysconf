@@ -85,6 +85,11 @@
     '';
   };
 
+  networking.firewall = {
+    allowedTCPPorts = [ 25565 ];
+    allowedUDPPorts = [ 25565 ];
+  };
+
   system.stateVersion = "23.11";
 }
 

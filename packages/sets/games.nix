@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.steam = {
@@ -8,5 +8,9 @@
   };
 
   programs.honkers-railway-launcher.enable = true;
+  
+  environment.systemPackages = with pkgs; [
+    prismlauncher
+  ];
 }
 
