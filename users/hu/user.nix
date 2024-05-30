@@ -30,6 +30,7 @@
       imports = [
         ./packages/zsh/zsh-home.nix
         ./packages/git.nix
+        ./packages/gtk.nix
         # ./packages/tmux.nix
         ./packages/hyprland.nix
         ./packages/foot.nix

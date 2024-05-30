@@ -28,6 +28,7 @@
 
     targets = {
       grub.enable = false;
+      gtk.enable = false;
     };
 
     opacity = {
