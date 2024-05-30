@@ -36,6 +36,7 @@
         ./packages/foot.nix
         ./packages/firefox.nix
         ./packages/rofi.nix
+        ./packages/fastfetch.nix
         ./packages/nvim/neovim.nix
         ./packages/ags/ags.nix
       ];
