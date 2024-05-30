@@ -7,7 +7,6 @@
 
   environment.systemPackages = with pkgs; [
     hyprpaper
-    dunst
     rofi-wayland
     foot
     wl-clipboard

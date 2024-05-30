@@ -1,21 +1,29 @@
+* {
+    font-family: 'Go Mono Nerd Font';
+    font-size: 12pt;
+}
+
 window.bar {
     background-color: @theme_bg_color;
     color: @theme_fg_color;
+    border-bottom: 1px solid @theme_selected_bg_color;
 }
 
 button {
     min-width: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0 6pt 0 6pt;
     background-color: transparent;
+    margin: 3pt 0 3pt 0;
 }
 
 button:active {
     background-color: @theme_selected_bg_color;
+    color: @theme_bg_color;
 }
 
 button:hover {
-    border-bottom: 3px solid @theme_fg_color;
+    border-bottom: 3pt solid @theme_fg_color;
+    margin-bottom: 0pt; /* Prevent bar from resizing from added bottom length from the border */
 }
 
 label {
@@ -23,7 +31,8 @@ label {
 }
 
 .workspaces button.focused {
-    border-bottom: 3px solid @theme_selected_bg_color;
+    border-bottom: 3pt solid @theme_selected_bg_color;
+    margin-bottom: 0pt ; /* Prevent bar from resizing from added bottom length from the border */
 }
 
 .client-title {
@@ -34,7 +43,164 @@ label {
     color: yellow;
 }
 
+/*
 levelbar block,
 highlight {
-    min-height: 10px;
+    min-height: 40pt;
+}
+*/
+
+window.notification-popups box.notifications {
+    padding: .5em;
+}
+
+window.notification-popups * {
+    font-size: 10pt;
+}
+
+.icon {
+    min-width: 38px;
+    min-height: 38px;
+    margin-right: 1em;
+}
+
+.icon image {
+    font-size: 38px;
+    /* to center the icon */
+    margin: 5px;
+    color: @theme_fg_color;
+}
+
+.icon box {
+    min-width: 38px;
+    min-height: 38px;
+    border-radius: 7px;
+}
+
+.notification {
+    min-width: 350px;
+    border-radius: 11px;
+    padding: 1em;
+    margin: .5em;
+    border: 1px solid @theme_selected_bg_color;
+    background-color: @theme_bg_color;
+}
+
+.notification.critical {
+    border: 1px solid lightcoral;
+}
+
+.title {
+    color: @theme_fg_color;
+}
+
+.body {
+    color: @theme_unfocused_fg_color;
+}
+
+.actions .action-button {
+    margin: 0 .4em;
+    margin-top: .8em;
+}
+
+.actions .action-button:first-child {
+    margin-left: 0;
+}
+
+.actions .action-button:last-child {
+    margin-right: 0;
+}
+
+.qsd {
+    border: 1px solid @theme_selected_bg_color;
+    background-color: @theme_bg_color;
+    border-radius: 10pt;
+    padding: 12pt;
+    color: @theme_fg_color;
+}
+
+.qsd-power { 
+    border: 1px solid @theme_selected_bg_color;
+    border-radius: 10pt;
+    padding: 6pt;
+    margin-bottom: 6pt;
+}
+
+.qsd-volume-mixer {
+    border: 1px solid @theme_selected_bg_color;
+    padding: 12pt;
+    border-radius: 10pt;
+}
+
+.qsd-volume-slider-container {
+    min-width: 250pt;
+}
+
+.volume-icon {
+    padding-right: 8pt;
+}
+
+.app-mixer {
+    border: 1px solid @theme_selected_bg_color;
+    padding: 12pt;
+    border-radius: 10pt;
+    margin-top: 6pt;
+}
+
+.app-mixer-label {
+    font-size: 10pt;
+}
+
+.player {
+    border: 1px solid @theme_selected_bg_color;
+    padding: 12pt;
+    border-radius: 10pt;
+    margin-top: 8pt;
+    padding: 10px;
+    min-width: 350px;
+}
+
+.player .img {
+    min-width: 100px;
+    min-height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 13px;
+    margin-right: 1em;
+}
+
+.player .title {
+    font-size: 1.2em;
+}
+
+.player .artist {
+    font-size: 1.1em;
+    color: @insensitive_fg_color;
+}
+
+.player scale.position {
+    padding: 0;
+    margin-bottom: .3em;
+}
+
+.player scale.position trough {
+    min-height: 8px;
+}
+
+.player scale.position highlight {
+    background-color: @theme_fg_color;
+}
+
+.player scale.position slider {
+    all: unset;
+}
+
+.player button {
+    min-height: 1em;
+    min-width: 1em;
+    padding: .3em;
+}
+
+.player button.play-pause {
+    margin: 0 .3em;
 }
