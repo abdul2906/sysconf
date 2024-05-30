@@ -32,7 +32,9 @@
       ".local/state/nvim"
       ".steam"
       ".local/share/Steam"
+      ".local/share/honkers-railway-launcher"
     ];
+
     files = [
       ".mozilla/firefox/shaga/places.sqlite"
       ".mozilla/firefox/shaga/xulstore.json"
