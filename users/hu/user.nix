@@ -10,6 +10,10 @@
     ./packages/zsh/zsh.nix
   ];
 
+  environment.variables = {
+    EDITOR = "nvim";
+  };
+
   users.users.hu = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
