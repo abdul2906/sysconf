@@ -1,15 +1,9 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
-  home.username = "blank";
-  home.homeDirectory = "/home/blank";
+  home.username = "i";
+  home.homeDirectory = "/home/i";
   home.stateVersion = "24.05";
-
-  /*
-  home.packages = with pkgs; [
-    nvim
-  ];
-  */
 
   home.file.".zshenv" = {
     text = "source ~/.nix-profile/etc/profile.d/hm-session-vars.sh";
@@ -21,8 +15,9 @@
   };
 
   imports = [
-    ./packages/nvim/neovim.nix 
-    ./packages/zsh/zsh-home.nix
+    ./shared_packages/nvim/neovim.nix 
+    ./shared_packages/zsh/zsh-home.nix
+    ./packages/neovim.nix
   ];
 
   programs.home-manager.enable = true;
