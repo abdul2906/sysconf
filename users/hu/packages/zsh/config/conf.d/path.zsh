@@ -8,6 +8,10 @@ add_to_path() {
 
 add_to_path "$HOME/.local/bin"
 
+if [ -f "/etc/profile.d/nix.sh" ]; then
+    source /etc/profile.d/nix.sh
+fi
+
 # Language package mangers
 if [ -n "$(command -v go)" ]; then 
     export GOPATH="$HOME/.local/share/go"

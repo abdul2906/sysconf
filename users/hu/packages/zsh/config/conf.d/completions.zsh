@@ -1,9 +1,11 @@
 #!/usr/bin/env zsh
 
-if [ -z "$FZF_TAB_FILE" ] && [ ! -d "$HOME/.cache/fzf-tab" ]; then
-   echo "Installing fzf-tab"
-   git clone "https://github.com/Aloxaf/fzf-tab" "$HOME/.cache/fzf-tab"
-   FZF_TAB_FILE="$HOME/.cache/fzf-tab/fzf-tab.plugin.zsh"
+if [ -z "$FZF_TAB_FILE" ]; then
+    if [ ! -d "$HOME/.cache/fzf-tab" ]; then
+        echo "Installing fzf-tab"
+        git clone "https://github.com/Aloxaf/fzf-tab" "$HOME/.cache/fzf-tab" 
+    fi
+    FZF_TAB_FILE="$HOME/.cache/fzf-tab/fzf-tab.plugin.zsh"
 fi
 
 autoload -Uz compinit
