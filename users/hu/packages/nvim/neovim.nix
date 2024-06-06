@@ -4,6 +4,8 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+
+    /* This doesn't work with standalone home-manager */
     extraPackages = with pkgs; [
       lua-language-server
       nodePackages.intelephense

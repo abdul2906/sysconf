@@ -82,17 +82,26 @@ return {
     ins_l {
       "filesize",
       cond = buffer_not_empty,
+      color = {
+        fg = rgb_to_hex(hl("Comment").fg),
+      }
     }
 
     ins_l {
       "o:encoding",
       cond = buffer_not_empty,
+      color = {
+        fg = rgb_to_hex(hl("Comment").fg),
+      }
     }
 
     ins_l {
       "fileformat",
       icons_enabled = false,
       cond = buffer_not_empty,
+      color = {
+        fg = rgb_to_hex(hl("Comment").fg),
+      }
     }
 
     ins_r { "diagnostics" }
@@ -110,6 +119,9 @@ return {
 
     ins_r {
       "location",
+      color = {
+        fg = rgb_to_hex(hl("Comment").fg),
+      }
     }
 
     ins_r {
