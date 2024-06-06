@@ -14,6 +14,7 @@ fi
 if [ ! -x "$HOME/.nix-profile/bin/home-manager" ]; then
     ln -svf "$BASE_PATH/users/blank/home-manager" "$HOME/.config/home-manager"
     ln -svf "$BASE_PATH/users/blank/nixpkgs" "$HOME/.config/nixpkgs"
+    ln -svf "$BASE_PATH/users/blank/nix" "$HOME/.config/nix"
 
     nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
     nix-channel --update
