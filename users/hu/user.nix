@@ -11,6 +11,9 @@
   ];
 
   environment.variables = {
+    # home.sessionVariables didn't work here for some reason
+    ZDOTDIR = "/home/hu/.config/zsh";
+
     EDITOR = "nvim";
   };
 
