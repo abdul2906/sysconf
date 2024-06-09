@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 {
   home.username = "i";
@@ -11,7 +11,6 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    ZDOTDIR = "${config.xdg.configHome}/zsh";
   };
 
   imports = [

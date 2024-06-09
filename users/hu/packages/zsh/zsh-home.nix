@@ -11,6 +11,10 @@
     thefuck
   ];
 
+  home.sessionVariables = {
+    ZDOTDIR = "${config.xdg.configHome}/zsh";
+  };
+
   home.file."${config.xdg.configHome}/zsh/conf.d" = {
     source = ./config/conf.d;
     recursive = true;
