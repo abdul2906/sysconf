@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   wayland.windowManager.hyprland.enable = true;
@@ -9,7 +9,7 @@
     "$terminal" = "foot";
     "$menu" = "rofi -show drun";
 
-    monitor = "DP-3,1920x1080@144,auto,1";
+    monitor = "DP-1,1920x1080@144,auto,1";
 
     input = {
       kb_layout = "gb:altgr-intl";
