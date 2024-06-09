@@ -12,6 +12,7 @@
       ripgrep
       nil
       gcc
+      basedpyright
     ];
   };
 
