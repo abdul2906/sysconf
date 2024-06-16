@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   home.username = "i";
@@ -17,6 +17,10 @@
     ./shared_packages/nvim/neovim.nix 
     ./shared_packages/zsh/zsh-home.nix
     ./packages/neovim.nix
+  ];
+
+  home.packages = with pkgs; [
+    act
   ];
 
   programs.home-manager.enable = true;
