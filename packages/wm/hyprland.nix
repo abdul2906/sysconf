@@ -21,17 +21,32 @@
     XDG_SESSION_TYPE = "wayland";
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    NIXOS_OZONE_WL = 1; # TODO: This doesn't work. Fix it
-    WLR_DRM_NO_ATOMIC = 1;
+    NIXOS_OZONE_WL = 1;
   };
 
   programs.hyprland.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.sddm.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
-  # TODO: switch out the display manager for a tui based one
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal";
+    TTYReset = true;
+    TTYHangup = true;
+    TTYVTDisallocate = true;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --cmd hyprland";
+        user = "greeter";
+      };
+    };
+  };
 
   xdg.portal = {
     enable = true;
