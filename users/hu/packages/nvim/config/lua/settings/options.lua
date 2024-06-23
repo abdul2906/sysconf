@@ -15,6 +15,7 @@ local options = {
   incsearch = true,
   hlsearch = false,
   backup = false,
+  termguicolors = true,
 }
 
 for option, value in pairs(options) do
