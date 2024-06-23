@@ -34,9 +34,9 @@
       };
 
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 1;
+        gaps_in = 3;
+        gaps_out = 6;
+        border_size = 2;
         layout = "master";
         allow_tearing = true;
         "col.inactive_border" = "rgb(242424)";
@@ -98,10 +98,6 @@
         "$mod SHIFT, 7, movetoworkspace, 7"
         "$mod SHIFT, 8, movetoworkspace, 8"
         "$mod SHIFT, 9, movetoworkspace, 9"
-      ];
-
-      exec-once = [
-        "ags"
       ];
     };
   };
