@@ -15,11 +15,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
     ags.url = "github:Aylur/ags";
   };
 
-  outputs = { nixpkgs, impermanence, home-manager, aagl, nur, stylix, ags, ... }:
+  outputs = { nixpkgs, impermanence, home-manager, aagl, nur, ags, ... }:
     {
       nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -32,7 +31,6 @@
           }
           impermanence.nixosModules.impermanence
           nur.nixosModules.nur
-          stylix.nixosModules.stylix
           aagl.nixosModules.default
 
           ./machines/workstation/configuration.nix

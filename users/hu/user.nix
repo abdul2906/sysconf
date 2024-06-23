@@ -5,15 +5,12 @@
     ../../packages/sets/communication.nix
     ../../packages/sets/games.nix
     ./persist.nix
-    ./packages/stylix.nix
     ./packages/nh.nix
     ./packages/zsh/zsh.nix
   ];
 
   environment.variables = {
-    # home.sessionVariables didn't work here for some reason
     ZDOTDIR = "/home/hu/.config/zsh";
-
     EDITOR = "nvim";
   };
 
@@ -23,8 +20,6 @@
     shell = pkgs.zsh;
     hashedPasswordFile = "/nix/config/secrets/hu/pass";
   };
-
-  # TODO: Figure out a way to run scripts with the user session as a systemd service
 
   home-manager = {
     useGlobalPkgs = true;
@@ -38,7 +33,6 @@
         ./packages/zsh/zsh-home.nix
         ./packages/git.nix
         ./packages/gtk.nix
-        # ./packages/tmux.nix
         ./packages/hyprland.nix
         ./packages/foot.nix
         ./packages/firefox.nix

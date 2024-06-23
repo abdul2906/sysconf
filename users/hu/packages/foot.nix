@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   programs.foot = {
@@ -6,6 +6,7 @@
     settings = {
       main = {
         pad = "8x8 center";
+        font = "Go Mono Nerd Font:size=12";
       };
 
       mouse = {
@@ -14,6 +15,10 @@
 
       scrollback = {
         lines = 10000;
+      };
+
+      colors = {
+        alpha = 0.9;
       };
     };
   };

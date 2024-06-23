@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   qt = {
     enable = true;
-    style = {
-      
-    };
+    platformTheme = "gnome";
+    style = "adwaita-dark";
   };
 }
+
