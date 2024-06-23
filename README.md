@@ -6,7 +6,7 @@ This is the NixOS configuration that I daily drive on my system. Feel free to us
 modify and share this configuration to your heart's content, no attribution required.
 
 ## Screenshots
-[Wallpaper](https://www.deviantart.com/view/279239085) modified with [gruvbox-factory](https://github.com/paulopacitti/gruvbox-factory).  
+[Wallpaper](https://yande.re/post/show/30591).
 
 ![Screeenshot](assets/screenshot.png)
 
