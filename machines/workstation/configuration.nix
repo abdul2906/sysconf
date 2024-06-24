@@ -71,13 +71,6 @@
     jack.enable = true;
   };
 
-  # Todo: Reorganize these
-  environment.systemPackages = with pkgs; [
-    neovim
-    mpv
-    imagemagick
-  ];
-
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes

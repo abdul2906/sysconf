@@ -78,6 +78,6 @@ Finally, in the config directory run `nixos-install --flake '.#'`, reboot and yo
 
 ### Non-NixOS
 Run the `non-nixos-install.sh` script. It will install both home-manager and nix.
-Your user is assumed to be called "blank". You need to replace every instance of it
+Your user is assumed to be called "i". You need to replace every instance of it
 in case you want to use a different username.
 

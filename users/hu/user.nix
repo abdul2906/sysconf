@@ -4,6 +4,7 @@
   imports = [
     ../../packages/sets/communication.nix
     ../../packages/sets/games.nix
+    ../../packages/sets/multimedia.nix
     ./persist.nix
     ./packages/nh.nix
     ./packages/zsh/zsh.nix

@@ -65,6 +65,13 @@
       bind = [
         "$mod, P, exec, $menu"
         "$mod, RETURN, exec, $terminal"
+        ", Scroll_Lock, exec, pavucontrol"
+        "$mod, f, exec, nautilus"
+
+        ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", Pause, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
         "$mod SHIFT, C, killactive"
         "$mod, SPACE, togglefloating"

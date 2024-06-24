@@ -10,11 +10,9 @@
     rofi-wayland
     foot
     wl-clipboard
-    pcmanfm # TODO: Replace with dolphin and figure out why stylix doesn't theme it.
+    gnome.nautilus
+    pavucontrol
   ];
-
-  # TODO: Use KDE portal features for file pickers and popups
-  # TODO: Add missing utilities for taking screenshots, recording, etc...
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";

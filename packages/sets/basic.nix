@@ -12,5 +12,6 @@
     git
     tree
     dos2unix
+    neovim
   ];
 }
