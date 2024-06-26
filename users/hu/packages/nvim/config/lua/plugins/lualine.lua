@@ -15,13 +15,13 @@ return {
           normal = {
             c = {
               fg = rgb_to_hex(hl("Normal").fg),
-              bg = rgb_to_hex(hl("Normal").bg),
+              bg = "none",
             },
           },
           inactive = {
             c = {
               fg = rgb_to_hex(hl("Normal").fg),
-              bg = rgb_to_hex(hl("Normal").bg),
+              bg = "none",
             },
           },
         },
