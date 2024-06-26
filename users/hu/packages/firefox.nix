@@ -134,8 +134,9 @@
     profiles.shaga = {
       isDefault = true;
       search = {
+        force = true;
         default = "Gruble";
-        order = [ "Gruble" "Nix Packages" "Home-manager options" ];
+        order = [ "Gruble" "Nix Packages" "Nix Options" "Home-manager options" ];
         engines = {
           "Gruble" = {
             urls = [
@@ -155,12 +156,26 @@
               template = "https://search.nixos.org/packages";
               params = [
                 { name = "type"; value = "packages"; }
+                { name = "channel"; value = "unstable"; }
                 { name = "query"; value = "{searchTerms}"; }
               ];
             }];
             iconUpdateURL = "https://nixos.org/favicon.png";
             updateInterval = 7 * 24 * 60 * 60 * 1000; # Weekly
             definedAliases = [ "@np" ];
+          };
+          "Nix Options" = {
+            urls = [{
+              template = "https://search.nixos.org/options";
+              params = [
+                { name = "type"; value = "packages"; }
+                { name = "channel"; value = "unstable"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+            iconUpdateURL = "https://nixos.org/favicon.png";
+            updateInterval = 7 * 24 * 60 * 60 * 1000; # Weekly
+            definedAliases = [ "@no" ];
           };
           "Home-manager options" = {
             urls = [{
@@ -175,14 +190,13 @@
             definedAliases = [ "@ho" ];
           };
         };
-        force = true;
       };
 
       extensions = with config.nur.repos.rycee.firefox-addons; [
         ublock-origin
         image-search-options
         bitwarden
-        skip-redirect
+        translate-web-pages
       ];
 
       settings = {
@@ -329,7 +343,6 @@
         "userChrome.theme.system_default" = true;
         "userChrome.theme.proton_color" = true;
         "userChrome.theme.proton_chrome" = true;
-
         "userChrome.theme.fully_color" = true;
         "userChrome.theme.fully_dark" = true;
         "userChrome.decoration.cursor" = true;

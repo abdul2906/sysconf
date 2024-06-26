@@ -21,7 +21,7 @@
       { directory = ".local/share/keyrings"; mode = "0700"; }
       ".local/share/direnv"
       ".mozilla/firefox/shaga/bookmarkbackups"
-      ".mozillla/firefox/shaga/chrome"
+      ".mozilla/firefox/shaga/chrome"
       ".config/Signal"
       ".config/vesktop"
       ".config/tutanota-desktop"
