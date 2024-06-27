@@ -18,7 +18,7 @@
 
         modules-left = [ "hyprland/workspaces" "hyprland/submap" ];
         modules-center = [ "hyprland/window" ];
-        modules-right = [ "clock" ];
+        modules-right = [ "tray" "clock" ];
       };
     };
     style = ''
