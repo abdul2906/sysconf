@@ -37,10 +37,10 @@
     "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  extraModprobeConfig = "options kvm_amd nested=1";
   boot.kernelParams = [
-    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     "nvidia_drm.fbdev=1"
   ];
 
