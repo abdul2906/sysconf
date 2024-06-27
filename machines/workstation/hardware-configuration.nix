@@ -39,7 +39,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  extraModprobeConfig = "options kvm_amd nested=1";
+  boot.extraModprobeConfig = "options kvm_amd nested=1";
   boot.kernelParams = [
     "nvidia_drm.fbdev=1"
   ];
