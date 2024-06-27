@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs; [
     prismlauncher
     protonup-qt
+    xivlauncher
   ];
 }
 

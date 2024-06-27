@@ -8,6 +8,7 @@
     ./persist.nix
     ./packages/nh.nix
     ./packages/zsh/zsh.nix
+    ./packages/virt-manager.nix
   ];
 
   environment.variables = {
@@ -17,7 +18,7 @@
 
   users.users.hu = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "libvirtd" ];
     shell = pkgs.zsh;
     hashedPasswordFile = "/nix/config/secrets/hu/pass";
   };
@@ -41,6 +42,7 @@
         ./packages/fastfetch.nix
         ./packages/nvim/neovim.nix
         ./packages/waybar.nix
+        ./packages/virt-manager-home.nix
       ];
     };
   };
