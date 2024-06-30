@@ -34,6 +34,7 @@
       ".local/share/Steam"
       ".local/share/honkers-railway-launcher"
       ".local/share/PrismLauncher"
+      ".xlcore"
     ];
 
     files = [
