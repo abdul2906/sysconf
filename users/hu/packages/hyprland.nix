@@ -44,7 +44,6 @@
       };
 
       master = {
-        new_is_master = false;
         mfact = 0.5;
       };
 
