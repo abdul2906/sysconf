@@ -35,6 +35,7 @@
       ".local/share/honkers-railway-launcher"
       ".local/share/PrismLauncher"
       ".xlcore"
+      ".local/share/Euro Truck Simulator 2"
     ];
 
     files = [
