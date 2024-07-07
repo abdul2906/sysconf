@@ -18,6 +18,7 @@
     prismlauncher
     protonup-qt
     xivlauncher
+    osu-lazer-bin
   ];
 }
 
