@@ -24,7 +24,11 @@
     gimp
     inkscape
     krita
-    opentabletdriver
   ];
+
+  hardware.opentabletdriver = {
+    enable = true;
+    daemon.enable = true;
+  };
 }
 
