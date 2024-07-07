@@ -37,6 +37,7 @@
       ".xlcore"
       ".local/share/Euro Truck Simulator 2"
       ".local/share/osu"
+      ".config/OpenTabletDriver"
     ];
 
     files = [
