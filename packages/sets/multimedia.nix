@@ -24,6 +24,7 @@
     gimp
     inkscape
     krita
+    opentabletdriver
   ];
 }
 
