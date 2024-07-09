@@ -7,6 +7,7 @@
     ../../packages/sets/basic.nix
     ../../packages/wm/hyprland.nix
     ../../users/hu/user.nix
+    ../../packages/sets/security.nix
   ];
 
   boot.loader.efi.canTouchEfiVariables = true;
