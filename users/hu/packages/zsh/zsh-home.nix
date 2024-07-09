@@ -8,7 +8,7 @@
     zsh-autosuggestions
     zsh-syntax-highlighting
     nix-zsh-completions
-    thefuck
+    #thefuck
   ];
 
   home.sessionVariables = {
