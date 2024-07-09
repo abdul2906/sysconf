@@ -22,6 +22,7 @@
       ".local/share/direnv"
       ".mozilla/firefox/shaga/bookmarkbackups"
       ".mozilla/firefox/shaga/chrome"
+      ".mozilla/firefox/shaga/storage/default"
       ".config/Signal"
       ".config/vesktop"
       ".config/tutanota-desktop"
