@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    vimiv-qt
     mpv
     imagemagick
     ffmpeg-full
