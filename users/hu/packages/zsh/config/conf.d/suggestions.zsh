@@ -9,10 +9,10 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 
-if [ -z "$AUTOSUGGEST_FILE" ]; then
+if [ -z "$AUTOSUGGEST_PLUGIN" ]; then
   import_file="/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 else
-  import_file="$AUTOSUGGEST_FILE"
+  import_file="$AUTOSUGGEST_PLUGIN"
 fi
 
 if [ ! -f "$import_file" ]; then

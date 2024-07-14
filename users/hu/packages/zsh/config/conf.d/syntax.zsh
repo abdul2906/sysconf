@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
-if [ -z "$SYNTAX_FILE" ]; then
+if [ -z "$SYNTAX_PLUGIN" ]; then
   import_file="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 else
-  import_file="$SYNTAX_FILE"
+  import_file="$SYNTAX_PLUGIN"
 fi
 
 if [ ! -f "$import_file" ]; then
