@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   services.hyprpaper = {
@@ -21,10 +21,6 @@
       enable = true;
       variables = [ "--all" ];
     };
-
-    plugins = with pkgs; [
-      hyprlandPlugins.csgo-vulkan-fix
-    ];
 
     settings = {
       "$mod" = "SUPER";
@@ -58,14 +54,6 @@
           enabled = true;
           size = 4;
           passes = 1;
-        };
-      };
-
-      plugin = {
-        csgo-vulkan-fix = {
-          res_w = 1440;
-          res_h = 1080;
-          class = "cs2";
         };
       };
 
