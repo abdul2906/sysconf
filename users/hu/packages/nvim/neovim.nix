@@ -13,6 +13,7 @@
       nil
       gcc
       basedpyright
+      rust-analyzer
     ];
   };
 
