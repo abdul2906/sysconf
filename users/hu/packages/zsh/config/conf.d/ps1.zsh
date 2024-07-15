@@ -11,9 +11,9 @@ esac
 
 if [ -n "$IN_NIX_SHELL" ]; then
     if [ -z "$NIX_SHELL_PACKAGES" ]; then
-        nix_shell_ps1="%F{red}nix-shell%f"
+        nix_shell_ps1=" %F{red}nix-shell%f"
     else
-        nix_shell_ps1="%F{red}{ $NIX_SHELL_PACKAGES }%f"
+        nix_shell_ps1=" %F{red}{ $NIX_SHELL_PACKAGES }%f"
     fi
 else
     nix_shell_ps1=""
