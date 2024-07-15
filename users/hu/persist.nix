@@ -20,9 +20,7 @@
       { directory = ".nixops"; mode = "0700"; }
       { directory = ".local/share/keyrings"; mode = "0700"; }
       ".local/share/direnv"
-      ".mozilla/firefox/shaga/bookmarkbackups"
-      ".mozilla/firefox/shaga/chrome"
-      ".mozilla/firefox/shaga/storage"
+      ".mozilla/firefox/shaga"
       ".config/Signal"
       ".config/vesktop"
       ".config/tutanota-desktop"
@@ -42,9 +40,6 @@
     ];
 
     files = [
-      ".mozilla/firefox/shaga/places.sqlite"
-      ".mozilla/firefox/shaga/xulstore.json"
-      # ".mozilla/firefox/shaga/prefs.js"
     ];
   };
 }
