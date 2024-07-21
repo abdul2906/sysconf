@@ -14,11 +14,9 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    ags.url = "github:Aylur/ags";
   };
 
-  outputs = { nixpkgs, impermanence, home-manager, aagl, nur, ags, ... }:
+  outputs = { nixpkgs, impermanence, home-manager, aagl, nur, ... }:
     {
       nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -26,7 +24,6 @@
           home-manager.nixosModules.home-manager {
             home-manager.sharedModules = [ 
               nur.hmModules.nur
-              ags.homeManagerModules.default
             ];
           }
           impermanence.nixosModules.impermanence
