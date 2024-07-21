@@ -42,6 +42,7 @@
   boot.extraModprobeConfig = "options kvm_amd nested=1";
   boot.kernelParams = [
     "nvidia_drm.fbdev=1"
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
 
   boot.initrd.postDeviceCommands = lib.mkAfter ''

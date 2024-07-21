@@ -313,6 +313,11 @@
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "";
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "";
 
+        # https://github.com/elFarto/nvidia-vaapi-driver?tab=readme-ov-file#firefox
+        "media.ffmpeg.vaapi.enabled" = true;
+        "media.rdd-ffmpeg.enabled" = true;
+        "media.av1.enabled" = false;
+
         # Options for the firefox-ui-fix using Photon
         # https://github.com/black7375/Firefox-UI-Fix/blob/master/user.js
         "userChrome.tab.connect_to_window" = true;
