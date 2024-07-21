@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ inputs, pkgs, ...}:
 
 {
   imports = [
@@ -26,6 +26,7 @@
   };
 
   programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
 

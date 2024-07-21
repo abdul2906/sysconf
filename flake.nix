@@ -14,12 +14,18 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, impermanence, home-manager, aagl, nur, ... }:
+  outputs = { nixpkgs, impermanence, home-manager, aagl, nur, ... } @ inputs:
     {
       nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; } ;
         modules = [
           home-manager.nixosModules.home-manager {
             home-manager.sharedModules = [ 
