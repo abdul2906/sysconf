@@ -5,6 +5,7 @@
     tutanota-desktop
     signal-desktop
     element-desktop
+    vesktop
   ];
 }
 
