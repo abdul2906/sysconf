@@ -8,13 +8,7 @@ return {
     local map = require"util.map"
 
     -- Default pickers
-    map("n", "<leader>tf", function()
-      if vim.fn.isdirectory(".git") ~= 0 then
-        tb.git_files()
-      else
-        tb.find_files()
-      end
-    end, "[T]elescope [f]iles")
+    map("n", "<leader>tf", tb.find_files,"[T]elescope [f]iles")
     map("n", "<leader>tg", tb.live_grep, "[T]elescope [g]rep")
     map("n", "<leader>tb", tb.buffers, "[T]elescope [b]uffers")
     map("n", "<leader>tm", function()
