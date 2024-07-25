@@ -47,7 +47,6 @@ modify and share this configuration to your heart's content, no attribution requ
 ```
 
 ## Installing
-### NixOS
 This configuration uses impermanence with btrfs snapshots so you'll have to partition
 your system in a certain way.
 
@@ -75,9 +74,4 @@ in `hardware-configuration.nix` and create a hashed password using `mkpasswd` an
 in the `secrets/{user}` directory as `pass`.  
 
 Finally, in the config directory run `nixos-install --flake '.#'`, reboot and you're done.
-
-### Non-NixOS
-Run the `non-nixos-install.sh` script. It will install both home-manager and nix.
-Your user is assumed to be called "i". You need to replace every instance of it
-in case you want to use a different username.
 
