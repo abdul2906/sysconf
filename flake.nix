@@ -22,10 +22,13 @@
   };
 
   outputs = { nixpkgs, impermanence, home-manager, aagl, nur, ... } @ inputs:
+    let
+      lib = nixpkgs.lib.extend (final: prev: 
+        import ./lib { lib = final; }
+      );
+    in
     {
-      nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; } ;
+      nixosConfigurations = lib.mkHosts {
         modules = [
           home-manager.nixosModules.home-manager {
             home-manager.sharedModules = [ 
@@ -35,9 +38,9 @@
           impermanence.nixosModules.impermanence
           nur.nixosModules.nur
           aagl.nixosModules.default
-
-          ./machines/workstation/configuration.nix
         ];
+        nixpkgs = nixpkgs;
+        inputs = inputs;
       };
     };
 }
