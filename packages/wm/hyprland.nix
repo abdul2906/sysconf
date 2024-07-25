@@ -10,7 +10,7 @@
     rofi-wayland
     foot
     wl-clipboard
-    gnome.nautilus
+    nautilus
     pavucontrol
     nvidia-vaapi-driver
   ];
