@@ -2,13 +2,15 @@
 
 {
   imports = [
-    ../../modules/desktop/apps/communication.nix
-    ../../modules/desktop/apps/games.nix
-    ../../modules/desktop/apps/multimedia.nix
     ./persist.nix
-    ./packages/nh.nix
-    ./packages/zsh/zsh.nix
-    ./packages/virt-manager.nix
+
+    ../modules/desktop/apps/communication.nix
+    ../modules/desktop/apps/games.nix
+    ../modules/desktop/apps/multimedia.nix
+
+    ../modules/packages/nh.nix
+    ../modules/packages/zsh.nix
+    ../modules/packages/virt-manager.nix
   ];
 
   environment.variables = {
@@ -20,7 +22,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" ];
     shell = pkgs.zsh;
-    hashedPasswordFile = "/nix/config/secrets/hu/pass";
+    hashedPasswordFile = "/nix/config/secrets/pass";
   };
 
   home-manager = {
@@ -32,7 +34,7 @@
       home.stateVersion = config.system.stateVersion;
 
       imports = [
-        ./packages/zsh/zsh-home.nix
+        ./packages/zsh.nix
         ./packages/git.nix
         ./packages/gtk.nix
         ./packages/hyprland.nix
@@ -40,9 +42,9 @@
         ./packages/firefox.nix
         ./packages/rofi.nix
         ./packages/fastfetch.nix
-        ./packages/nvim/neovim.nix
+        ./packages/nvim.nix
         ./packages/waybar.nix
-        ./packages/virt-manager-home.nix
+        ./packages/virt-manager.nix
       ];
     };
   };

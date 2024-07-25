@@ -9,7 +9,7 @@
     ../../modules/desktop/environments/hyprland.nix
     ../../modules/system/security.nix
 
-    ../../users/hu/user.nix
+    ../../home/default.nix
   ];
 
   boot.loader.efi.canTouchEfiVariables = true;
