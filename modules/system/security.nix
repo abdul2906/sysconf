@@ -1,6 +1,10 @@
 { ... }:
 
 {
+  security.sudo.extraConfig = ''
+    Defaults  lecture="never"
+  '';
+
   services.clamav = {
     scanner.enable = true;
     daemon.enable = true;
