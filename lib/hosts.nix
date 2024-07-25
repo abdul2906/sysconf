@@ -13,8 +13,6 @@
       modules = modules;
     };
   in
-    builtins.trace "Hosts found: ${builtins.toString hosts}"
-    builtins.trace "Path being used: ${path}"
     builtins.listToAttrs (builtins.map (host: {
       name = host;
       value = nixpkgs.lib.nixosSystem {
