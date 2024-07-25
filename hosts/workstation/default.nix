@@ -4,10 +4,12 @@
   imports = [
     ./hardware-configuration.nix
     ./persist.nix
-    ../../packages/sets/basic.nix
-    ../../packages/wm/hyprland.nix
+
+    ../../modules/system/basic.nix
+    ../../modules/desktop/environments/hyprland.nix
+    ../../modules/system/security.nix
+
     ../../users/hu/user.nix
-    ../../packages/sets/security.nix
   ];
 
   boot.loader.efi.canTouchEfiVariables = true;

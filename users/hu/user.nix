@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ../../packages/sets/communication.nix
-    ../../packages/sets/games.nix
-    ../../packages/sets/multimedia.nix
+    ../../modules/desktop/apps/communication.nix
+    ../../modules/desktop/apps/games.nix
+    ../../modules/desktop/apps/multimedia.nix
     ./persist.nix
     ./packages/nh.nix
     ./packages/zsh/zsh.nix
