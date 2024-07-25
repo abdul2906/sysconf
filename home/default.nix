@@ -3,14 +3,6 @@
 {
   imports = [
     ./persist.nix
-
-    ../modules/desktop/apps/communication.nix
-    ../modules/desktop/apps/games.nix
-    ../modules/desktop/apps/multimedia.nix
-
-    ../modules/packages/nh.nix
-    ../modules/packages/zsh.nix
-    ../modules/packages/virt-manager.nix
   ];
 
   environment.variables = {

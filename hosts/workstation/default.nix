@@ -8,6 +8,12 @@
     ../../modules/system/basic.nix
     ../../modules/desktop/environments/hyprland.nix
     ../../modules/system/security.nix
+    ../../modules/desktop/apps/communication.nix
+    ../../modules/desktop/apps/games.nix
+    ../../modules/desktop/apps/multimedia.nix
+    ../../modules/packages/nh.nix
+    ../../modules/packages/zsh.nix
+    ../../modules/packages/virt-manager.nix
 
     ../../home/default.nix
   ];
