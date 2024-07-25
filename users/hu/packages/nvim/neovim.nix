@@ -14,6 +14,7 @@
       gcc
       basedpyright
       rust-analyzer
+      zathura
     ];
   };
 
