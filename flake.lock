@@ -126,18 +126,16 @@
         "hyprlang": "hyprlang",
         "hyprutils": "hyprutils",
         "hyprwayland-scanner": "hyprwayland-scanner",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs",
         "systems": "systems",
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1721914179,
-        "narHash": "sha256-WZg2L+57atfJXwMA78pbmMnnlNXllnX+GcFwx2P/wPU=",
+        "lastModified": 1722016404,
+        "narHash": "sha256-zlO1JffU6YLrcc7XtPikMsodvhlkbdRcDfqDsoHzgQY=",
         "ref": "refs/heads/main",
-        "rev": "33a5c8ce325e1657ec5571b57e05c6378706f4cd",
-        "revCount": 4984,
+        "rev": "57371b93a058d17affb0ca92f13b8d40582b3ea0",
+        "revCount": 4985,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -271,6 +269,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1721379653,
+        "narHash": "sha256-8MUgifkJ7lkZs3u99UDZMB4kbOxvMEXQZ31FO3SopZ0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1d9c2c9b3e71b9ee663d11c5d298727dace8d374",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1721924956,
         "narHash": "sha256-Sb1jlyRO+N8jBXEX9Pg9Z1Qb8Bw9QyOgLDNMEpmjZ2M=",
         "owner": "nixos",
@@ -287,11 +301,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1722015900,
-        "narHash": "sha256-v/B1e5SQDTCBgppQbhZlSwf+RHt6Ct5pqdhrZbLA03w=",
+        "lastModified": 1722016195,
+        "narHash": "sha256-HwzjeK2aMYXn7X6pUfcuAd+fH90Ia+evhkT0ZODc+cU=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "2308f5ba2aa1288c01f2c1af4d4c1cbcefcde0f0",
+        "rev": "b51ebdb75573c51ddc621ba1bd3ea3488b2afc99",
         "type": "github"
       },
       "original": {
@@ -306,7 +320,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "impermanence": "impermanence",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nur": "nur"
       }
     },
