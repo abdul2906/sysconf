@@ -1,5 +1,5 @@
 # nixos-system-config
-My NixOS configuration.
+My modular NixOS configuration.
 
 ## About
 This is the NixOS configuration that I daily drive on my system. Feel free to use,
@@ -12,38 +12,37 @@ modify and share this configuration to your heart's content, no attribution requ
 
 ## Layout
 ```
-├── assets                              ; Images used by the config and repo
-│   └── wallpaper.png
+├── assets                                  ; Binary assets tracked in git
+│   ├── screenshot.png
+│   └── wallpaper.jpg
+├── dotfiles                                ; GNU stow compatible dotfiles directory
+│   └── ...                                 ; Stores configurations that do not depend on Nix
 ├── flake.lock
-├── flake.nix                           ; Entry point
-├── machines                            ; Machine specific configuration
-│   └── workstation
-│       ├── configuration.nix
-│       ├── hardware-configuration.nix  ; Modified hardware configuration
-│       └── persist.nix                 ; Impermanence configuration
-├── packages                            ; Sets of packages to install and configure
-│   ├── sets
-│   │   ├── games.nix
+├── flake.nix                               ; Entry point
+├── home                                    ; home-manager configuration
+│   ├── default.nix                         ; User and home-manager options
+│   ├── packages                            ; Per-package home-manager configuration
 │   │   └── ...
-│   └── wm                              ; Package sets and basic config for WM and DE
-│       ├── hyprland.nix
+│   └── persist.nix                         ; Home opt-in state directories and files
+├── hosts                                   ; Host configurations
+│   └── workstation
+│       ├── default.nix                     ; Host configuration.nix equivalent
+│       ├── hardware-configuration.nix      ; Host hardware specific configuration
+│       └── persist.nix                     ; System wide opt-in state directories and files
+├── lib                                     ; Custom helper functions
+│   ├── default.nix
+│   └── ...
+├── modules                                 ; System modules and sets of packages
+│   ├── desktop
+│   │   ├── apps
+│   │   │   └── ...
+│   │   └── environments
+│   │       └── ...
+│   └── system
 │       └── ...
 ├── README.md
-├── secrets                             ; Git ignored folder to store confidentials
-│   └── hu
-│       └── pass                        ; Hashed password file for user
-└── users
-    └── hu                              ; User specific configuration
-        ├── packages                    ; Package configurations
-        │   ├── firefox.nix             ; Configurations can be for NixOS or home-manager
-        │   ├── ...
-        │   └── zsh
-        │       ├── config              ; Non-nix package config directory
-        │       │   └── conf.d
-        │       ├── zsh-home.nix        ; For home-manager
-        │       └── zsh.nix             ; For NixOS
-        ├── persist.nix                 ; Impermanence configuration for the user
-        └── user.nix
+└── secrets                                 ; Location of secrets not tracked in the git tree
+    └── pass
 ```
 
 ## Installing
@@ -71,7 +70,14 @@ and call it `root-blank`.
 After you've mounted all the subvolumes and EFI partition (`/boot`) in `/mnt`
 clone this repository in to `/mnt/nix/config`. Adjust all the block ids of the partitions
 in `hardware-configuration.nix` and create a hashed password using `mkpasswd` and store it
-in the `secrets/{user}` directory as `pass`.  
+in the `secrets` directory as `pass`.  
 
 Finally, in the config directory run `nixos-install --flake '.#'`, reboot and you're done.
 
+## Updating
+This configuration sets up [nh](https://github.com/viperML/nh) for a prettier and more convenient
+way of keeping the system up to date. To update you can simply run:
+```sh
+nix flake update /nix/config
+nh os switch
+```
