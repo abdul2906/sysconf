@@ -15,6 +15,12 @@
       basedpyright
       rust-analyzer
       zathura
+      git
+      texliveFull
+      luajitPackages.jsregexp
+      luajitPackages.luarocks
+      fd
+      texlab
     ];
   };
 
