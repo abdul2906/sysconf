@@ -15,7 +15,7 @@ modify and share this configuration to your heart's content, no attribution requ
 ├── assets                                  ; Binary assets tracked in git
 │   ├── screenshot.png
 │   └── wallpaper.jpg
-├── dotfiles                                ; GNU stow compatible dotfiles directory
+├── dotfiles                                ; Distro agnostic dotfiles
 │   └── ...                                 ; Stores configurations that do not depend on Nix
 ├── flake.lock
 ├── flake.nix                               ; Entry point
