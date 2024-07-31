@@ -20,6 +20,10 @@ local function distro_traits(name)
       icon = "",
       color = "#73ba25",
     },
+    [ "distrobox" ] = {
+      icon = "[󰏗 " .. os.getenv("CONTAINER_ID") .. "]",
+      color = "#917d62",
+    },
   }
 
   local icon = icons[name]
@@ -31,6 +35,13 @@ local function distro_traits(name)
 end
 
 return function()
+  if os.getenv("CONTAINER_ID") ~= nil then
+    return {
+      name = "distrobox",
+      traits = distro_traits("distrobox"),
+    }
+  end
+
   local release_file = io.open("/etc/os-release", "rb")
   if release_file == nil then
     return {

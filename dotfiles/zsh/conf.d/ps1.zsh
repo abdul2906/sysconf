@@ -19,6 +19,10 @@ else
     nix_shell_ps1=""
 fi
 
+if [ -n "$CONTAINER_ID" ]; then
+    dicon="%F{bg-yellow}[󰏗 $CONTAINER_ID]%f"
+fi
+
 setopt prompt_subst
 autoload -Uz vcs_info
 precmd () { vcs_info }
