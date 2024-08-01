@@ -10,11 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
@@ -22,7 +17,7 @@
     };
   };
 
-  outputs = { nixpkgs, impermanence, home-manager, aagl, nur, ... } @ inputs:
+  outputs = { nixpkgs, impermanence, home-manager, nur, ... } @ inputs:
     let
       lib = nixpkgs.lib.extend (final: prev: 
         import ./lib { lib = final; }
@@ -38,7 +33,6 @@
           }
           impermanence.nixosModules.impermanence
           nur.nixosModules.nur
-          aagl.nixosModules.default
         ];
         nixpkgs = nixpkgs;
         inputs = inputs;
