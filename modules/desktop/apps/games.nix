@@ -12,6 +12,7 @@
     protonup-qt
     xivlauncher
     osu-lazer-bin
+    protontricks
   ];
 }
 
