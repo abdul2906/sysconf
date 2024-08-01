@@ -21,6 +21,7 @@
       luajitPackages.luarocks
       fd
       texlab
+      haskell-language-server
     ];
   };
 
