@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, pkgs, ... }:
 
 {
   services.hyprpaper = {
@@ -17,6 +17,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     systemd = {
       enable = true;
       variables = [ "--all" ];
@@ -28,6 +29,11 @@
       "$menu" = "rofi -show drun";
 
       monitor = "DP-1,1920x1080@144,auto,1";
+
+      # Freezes Firefox, enable later when useable.
+      # experimental = {
+      #   explicit_sync = true;
+      # };
 
       cursor = {
         no_hardware_cursors = true;
