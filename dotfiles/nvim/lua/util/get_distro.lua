@@ -20,11 +20,14 @@ local function distro_traits(name)
       icon = "",
       color = "#73ba25",
     },
-    [ "distrobox" ] = {
+  }
+
+  if os.getenv("CONTAINER_ID") ~= nil then
+    icons["distrobox"] = {
       icon = "[󰏗 " .. os.getenv("CONTAINER_ID") .. "]",
       color = "#917d62",
-    },
-  }
+    }
+  end
 
   local icon = icons[name]
   if icon == nil then
