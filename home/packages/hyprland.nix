@@ -30,10 +30,9 @@
 
       monitor = "DP-1,1920x1080@144,auto,1";
 
-      # Freezes Firefox, enable later when useable.
-      # experimental = {
-      #   explicit_sync = true;
-      # };
+      experimental = {
+        explicit_sync = true;
+      };
 
       cursor = {
         no_hardware_cursors = true;
