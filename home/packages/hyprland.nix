@@ -33,6 +33,10 @@
         no_hardware_cursors = true;
       };
 
+      render = {
+        explicit_sync = 0;
+      };
+
       input = {
         kb_layout = "gb:intl";
         follow_mouse = 1;
