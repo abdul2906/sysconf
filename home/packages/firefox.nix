@@ -197,6 +197,7 @@
         image-search-options
         bitwarden
         translate-web-pages
+        tampermonkey
       ];
 
       settings = {
