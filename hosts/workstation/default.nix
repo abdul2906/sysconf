@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./persist.nix
+    ../../home/default.nix
 
     ../../modules/system/basic.nix
     ../../modules/desktop/environments/hyprland.nix
@@ -12,8 +13,10 @@
     ../../modules/desktop/apps/games.nix
     ../../modules/desktop/apps/multimedia.nix
     ../../modules/system/virtualisation.nix
-
-    ../../home/default.nix
+    ../../modules/system/development.nix
+    ../../modules/packages/firefox.nix
+    ../../modules/packages/zsh.nix
+    ../../modules/packages/fastfetch.nix
   ];
 
   boot.loader.efi.canTouchEfiVariables = true;
@@ -81,11 +84,6 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-  };
-
-  networking.firewall = {
-    allowedTCPPorts = [ 25565 ];
-    allowedUDPPorts = [ 25565 ];
   };
 
   system.stateVersion = "23.11";

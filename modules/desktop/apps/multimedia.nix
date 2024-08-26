@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  environment.persistence."/nix/persist".users.hu.directories = [
+    ".config/OpenTabletDriver"
+  ];
+
   environment.systemPackages = with pkgs; [
     mpv
     imagemagick

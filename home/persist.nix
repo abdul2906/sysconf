@@ -19,27 +19,8 @@
       { directory = ".ssh"; mode = "0700"; }
       { directory = ".nixops"; mode = "0700"; }
       { directory = ".local/share/keyrings"; mode = "0700"; }
-      ".local/share/direnv"
-      ".mozilla/firefox/shaga"
-      ".config/Signal"
-      ".config/vesktop"
-      ".config/tutanota-desktop"
-      ".config/tuta_integration"
-      ".config/Element"
       { directory = ".pki"; mode = "0700"; }
-      ".local/share/nvim"
-      ".local/state/nvim"
-      ".steam"
-      ".local/share/Steam"
-      ".local/share/honkers-railway-launcher"
-      ".local/share/PrismLauncher"
-      ".xlcore"
-      ".local/share/Euro Truck Simulator 2"
-      ".local/share/osu"
-      ".config/OpenTabletDriver"
-    ];
-
-    files = [
+      ".local/share/direnv"
     ];
   };
 }
