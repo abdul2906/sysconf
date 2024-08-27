@@ -29,5 +29,5 @@ precmd () { vcs_info }
 zstyle ':vcs_info:*' formats ' %F{yellow}(%b)%f'
 
 NL=$'\n'
-export PS1='%F{green}%~%f$vcs_info_msg_0_$nix_shell_ps1$NL$dicon > '
+export PS1='[$dicon %F{green}%3~%f$vcs_info_msg_0_$nix_shell_ps1]# '
 
