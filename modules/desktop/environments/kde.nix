@@ -73,7 +73,7 @@
             }
             "org.kde.plasma.marginsseperator"
             {
-              digialclock = {
+              digitalClock = {
                 calendar.firstDayOfWeek = "monday";
                 time.format = "24h";
               };
