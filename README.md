@@ -6,7 +6,9 @@ This is the NixOS configuration that I daily drive on my system. Feel free to us
 modify and share this configuration to your heart's content, no attribution required.
 
 ## Screenshots
-[Wallpaper](https://yande.re/post/show/30591).
+|KDE Plasma|Hyprland|
+---------------------
+|![plasma screenshot](assets/screenshots/kde.png)|![hyprland screenshot](assets/screenshots/hyprland.png)|
 
 ![Screeenshot](assets/screenshot.png)
 
