@@ -1,19 +1,35 @@
 { pkgs, ... }:
 
-{
+let
+  sddm-background-drv = pkgs.stdenvNoCC.mkDerivation {
+    name = "sddm-background-drv";
+    src = ../../../assets/wallpapers;
+    dontUnpack = true;
+    installPhase = ''
+      cp $src/kde.png $out
+    '';
+  };
+in {
   imports = [
     ../../system/fonts.nix
+  ];
+
+  environment.persistence."/nix/persist".directories = [
+    "/var/lib/AccountsService/"
   ];
 
   environment.persistence."/nix/persist".users.hu.directories = [
     # https://github.com/nix-community/plasma-manager/issues/172
     ".local/share/konsole"
     ".local/share/kwalletd"
+    ".local/share/baloo"
+    ".local/share/dolphin"
   ];
 
   environment.persistence."/nix/persist".users.hu.files = [
     ".config/konsolerc"
     ".config/kwinoutputconfig.json"
+    ".local/state/konsolestaterc"
   ];
 
   environment.sessionVariables = {
@@ -41,6 +57,10 @@
   environment.systemPackages = with pkgs; [
     nvidia-vaapi-driver
     kdePackages.sddm-kcm
+    (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+      [General]
+      background=${sddm-background-drv}
+    '')
   ];
 
   home-manager.users.hu = {
