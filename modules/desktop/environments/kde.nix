@@ -5,6 +5,18 @@
     ../../system/fonts.nix
   ];
 
+  environment.persistence."/nix/persist".users.hu.directories = [
+    # https://github.com/nix-community/plasma-manager/issues/172
+    ".config/kwinoutputconfig.json"
+  ];
+
+  environment.persistence."/nix/persist".users.hu.files = [
+    # Konsole background transparency has to be set manually in
+    # the profile settings. This ensures that it doesn't have to be
+    # redone every reboot.
+    ".local/share/konsole/Breeze.colorscheme"
+  ];
+
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
     XDG_SESSION_TYPE = "wayland";
@@ -29,6 +41,7 @@
 
   environment.systemPackages = with pkgs; [
     nvidia-vaapi-driver
+    kdePackages.sddm-kcm
   ];
 
   home-manager.users.hu = {
@@ -38,10 +51,9 @@
       };
     };
 
-    gtk = {
-      enable = true;
+    gtk = { enable = true;
       theme = {
-        name = "breeze";
+        name = "Breeze";
         package = pkgs.kdePackages.breeze-gtk;
       };
     };
@@ -56,39 +68,96 @@
       panels = [
         {
           location = "bottom";
+          floating = true;
           widgets = [
             {
               kickoff = {
                 icon = "nix-snowflake-white";
               };
             }
+            "org.kde.plasma.pager"
             {
               iconTasks = {
                 launchers = [
                   "applications:org.kde.dolphin.desktop"
                   "applications:org.kde.konsole.desktop"
-                  "applications:org.mozilla.firefox.desktop"
+                  "applications:org.mozilla.firefox-esr.desktop"
                 ];
               };
             }
-            "org.kde.plasma.marginsseperator"
+            "org.kde.plasma.marginsseparator"
+            "org.kde.plasma.systemtray"
             {
               digitalClock = {
                 calendar.firstDayOfWeek = "monday";
                 time.format = "24h";
               };
             }
-            {
-              systemTray.items = {
-                shown = [
-                  "org.kde.plasma.networkmanagement"
-                  "org.kde.plasma.volume"
-                ];
-              };
-            }
+            "org.kde.plasma.showdesktop"
           ];
         }
       ];
+
+      shortcuts = {
+        kwin = {
+          "Switch to Desktop 1" = "Meta+1";
+          "Switch to Desktop 2" = "Meta+2";
+          "Switch to Desktop 3" = "Meta+3";
+          "Switch to Desktop 4" = "Meta+4";
+          "Switch to Desktop 5" = "Meta+5";
+          "Switch to Desktop 6" = "Meta+6";
+          "Switch to Desktop 7" = "Meta+7";
+          "Switch to Desktop 8" = "Meta+8";
+          "Switch to Desktop 9" = "Meta+9";
+          "Window to Desktop 1" = "Meta+Shift+1";
+          "Window to Desktop 2" = "Meta+Shift+2";
+          "Window to Desktop 3" = "Meta+Shift+3";
+          "Window to Desktop 4" = "Meta+Shift+4";
+          "Window to Desktop 5" = "Meta+Shift+5";
+          "Window to Desktop 6" = "Meta+Shift+6";
+          "Window to Desktop 7" = "Meta+Shift+7";
+          "Window to Desktop 8" = "Meta+Shift+8";
+          "Window to Desktop 9" = "Meta+Shift+9";
+        };
+      };
+
+      configFile = {
+        kwinrc = {
+          Desktops.Number = {
+            value = 9;
+            rows = 3;
+          };
+        };
+
+        plasmaashellrc = {
+          PlasmaViews."Panel 2".Defaults = {
+            panelOpacity = 2;
+          };
+        };
+
+        kxkbrc = {
+          Layout = {
+            LayoutList = "gb";
+            Use = true;
+          };
+        };
+      };
+    };
+
+    programs.konsole = {
+      enable = true;
+      defaultProfile = "hu";
+      extraConfig = {
+        MenuBar = "Disabled";
+        MainWindow.MenuBar = "Disabled";
+      };
+      profiles.hu = {
+        colorScheme = "Breeze";
+        font = {
+          name = "Go Mono Nerd Font";
+          size = 12;
+        };
+      };
     };
   };
 }
