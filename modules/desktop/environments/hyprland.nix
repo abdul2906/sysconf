@@ -104,10 +104,10 @@
         ipc = "on";
         splash = false;
         preload = [
-          "/nix/config/assets/wallpaper.jpg"
+          "/nix/config/assets/wallpapers/hyprland.jpg"
         ];
         wallpaper = [
-          ",/nix/config/assets/wallpaper.jpg"
+          ",/nix/config/wallpapers/hyprland.jpg"
         ];
       };
     };

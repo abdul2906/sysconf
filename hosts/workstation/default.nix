@@ -6,8 +6,8 @@
     ./persist.nix
     ../../home/default.nix
 
+    ../../modules/desktop/environments/kde.nix
     ../../modules/system/basic.nix
-    ../../modules/desktop/environments/hyprland.nix
     ../../modules/system/security.nix
     ../../modules/desktop/apps/communication.nix
     ../../modules/desktop/apps/games.nix
