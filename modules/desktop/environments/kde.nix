@@ -128,15 +128,18 @@ in {
           "Switch to Desktop 7" = "Meta+7";
           "Switch to Desktop 8" = "Meta+8";
           "Switch to Desktop 9" = "Meta+9";
-          "Window to Desktop 1" = "Meta+Shift+1";
-          "Window to Desktop 2" = "Meta+Shift+2";
-          "Window to Desktop 3" = "Meta+Shift+3";
-          "Window to Desktop 4" = "Meta+Shift+4";
-          "Window to Desktop 5" = "Meta+Shift+5";
-          "Window to Desktop 6" = "Meta+Shift+6";
-          "Window to Desktop 7" = "Meta+Shift+7";
-          "Window to Desktop 8" = "Meta+Shift+8";
-          "Window to Desktop 9" = "Meta+Shift+9";
+
+          # Don't blame me for this. This is all the doing of kwin.
+          # You're going to have to adjust this to your layout.
+          "Window to Desktop 1" = "Meta+Shift+!";
+          "Window to Desktop 2" = "Meta+Shift+\"";
+          "Window to Desktop 3" = "Meta+Shift+£";
+          "Window to Desktop 4" = "Meta+Shift+$";
+          "Window to Desktop 5" = "Meta+Shift+%";
+          "Window to Desktop 6" = "Meta+Shift+^";
+          "Window to Desktop 7" = "Meta+Shift+&";
+          "Window to Desktop 8" = "Meta+Shift+*";
+          "Window to Desktop 9" = "Meta+Shift+(";
         };
       };
 
