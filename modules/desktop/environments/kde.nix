@@ -123,14 +123,18 @@
 
       configFile = {
         kwinrc = {
-          Desktops.Number = {
-            value = 9;
-            rows = 3;
+          Desktops = {
+            Number = {
+              value = 9;
+            };
+            Rows = {
+              value = 3;
+            };
           };
         };
 
         plasmaashellrc = {
-          PlasmaViews."Panel 2".Defaults = {
+          PlasmaViews = {
             panelOpacity = 2;
           };
         };
@@ -148,7 +152,7 @@
       enable = true;
       defaultProfile = "hu";
       extraConfig = {
-        MenuBar = "Disabled";
+        # MenuBar = "Disabled";
         MainWindow.MenuBar = "Disabled";
       };
       profiles.hu = {
