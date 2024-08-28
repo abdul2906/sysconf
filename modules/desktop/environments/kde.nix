@@ -64,6 +64,7 @@ in {
       [General]
       background=${sddm-background-drv}
     '')
+    networkmanager-openvpn
   ];
 
   home-manager.users.hu = {
