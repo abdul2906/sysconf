@@ -7,10 +7,8 @@ modify and share this configuration to your heart's content, no attribution requ
 
 ## Screenshots
 |KDE Plasma|Hyprland|
----------------------
+|---|---|
 |![plasma screenshot](assets/screenshots/kde.png)|![hyprland screenshot](assets/screenshots/hyprland.png)|
-
-![Screeenshot](assets/screenshot.png)
 
 ## Layout
 ```
