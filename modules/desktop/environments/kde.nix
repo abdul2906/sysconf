@@ -8,13 +8,11 @@
   environment.persistence."/nix/persist".users.hu.directories = [
     # https://github.com/nix-community/plasma-manager/issues/172
     ".config/kwinoutputconfig.json"
+    ".local/share/konsole"
   ];
 
   environment.persistence."/nix/persist".users.hu.files = [
-    # Konsole background transparency has to be set manually in
-    # the profile settings. This ensures that it doesn't have to be
-    # redone every reboot.
-    ".local/share/konsole/Breeze.colorscheme"
+    ".config/konsolerc"
   ];
 
   environment.sessionVariables = {
@@ -144,22 +142,6 @@
             LayoutList = "gb";
             Use = true;
           };
-        };
-      };
-    };
-
-    programs.konsole = {
-      enable = true;
-      defaultProfile = "hu";
-      extraConfig = {
-        # MenuBar = "Disabled";
-        MainWindow.MenuBar = "Disabled";
-      };
-      profiles.hu = {
-        colorScheme = "Breeze";
-        font = {
-          name = "Go Mono Nerd Font";
-          size = 12;
         };
       };
     };
