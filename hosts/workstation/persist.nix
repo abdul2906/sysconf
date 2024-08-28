@@ -13,6 +13,7 @@
         group = "colord";
         mode = "u=rwx,g=rx,o=";
       }
+      "/etc/NetworkManager/system-connections"
     ];
     files = [
       "/etc/machine-id"

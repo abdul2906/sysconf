@@ -32,6 +32,9 @@ in {
     ".local/state/konsolestaterc"
   ];
 
+  networking.networkmanager.enable = true;
+  users.users.hu.extraGroups = [ "networkmanager" ];
+
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
     XDG_SESSION_TYPE = "wayland";
