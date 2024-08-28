@@ -53,11 +53,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1724754492,
-        "narHash": "sha256-oTQ3H993c2hJREkqEN5zyff5ifIRKDRtFTvHlxFcHdI=",
+        "lastModified": 1724861195,
+        "narHash": "sha256-86GF+dIAJkBUCmaZ9sWNULMxYyIrpP4nmZIm1W6QSsw=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "d39c7ced498d546513270b314d682ac5d7de734d",
+        "rev": "7dd08a0f2fd7da26e5051a2fbbe3190f4235d645",
         "type": "github"
       },
       "original": {
@@ -66,12 +66,36 @@
         "type": "github"
       }
     },
+    "plasma-manager": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1724556439,
+        "narHash": "sha256-gPR3sxkKxISUvydnqoj54znpUkK8av/HVFuFJuYUw3w=",
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "rev": "5c97fe8af2a2e561f14195ed357d8c451fdbff4c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
-        "nur": "nur"
+        "nur": "nur",
+        "plasma-manager": "plasma-manager"
       }
     }
   },
