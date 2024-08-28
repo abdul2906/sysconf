@@ -7,12 +7,13 @@
 
   environment.persistence."/nix/persist".users.hu.directories = [
     # https://github.com/nix-community/plasma-manager/issues/172
-    ".config/kwinoutputconfig.json"
     ".local/share/konsole"
+    ".local/share/kwalletd"
   ];
 
   environment.persistence."/nix/persist".users.hu.files = [
     ".config/konsolerc"
+    ".config/kwinoutputconfig.json"
   ];
 
   environment.sessionVariables = {
