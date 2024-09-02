@@ -121,6 +121,14 @@ in {
         }
       ];
 
+      powerdevil = {
+        AC = {
+          autoSuspend.action = "nothing";
+          dimDisplay.enable = false;
+          powerButtonAction = "hibernate";
+        };
+      };
+
       shortcuts = {
         kwin = {
           "Switch to Desktop 1" = "Meta+1";
