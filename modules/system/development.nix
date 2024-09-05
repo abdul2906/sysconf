@@ -9,4 +9,7 @@
   environment.systemPackages = with pkgs; [
     wireshark
   ];
+
+  users.users.hu.extraGroups = [ "wireshark" ];
 }
+
