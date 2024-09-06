@@ -16,6 +16,8 @@ local options = {
   hlsearch = false,
   backup = false,
   termguicolors = true,
+  scrolloff = 8,
+  sidescrolloff = 8,
 }
 
 for option, value in pairs(options) do
