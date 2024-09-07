@@ -18,7 +18,7 @@
         lua-language-server
         nodePackages.intelephense
         nodePackages.typescript-language-server
-        llvmPackages_19.clang-tools
+        ccls
         ripgrep
         nil
         gcc
