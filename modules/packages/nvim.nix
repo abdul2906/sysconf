@@ -32,6 +32,7 @@
         fd
         texlab
         haskell-language-server
+        rustc
       ];
     };
 
