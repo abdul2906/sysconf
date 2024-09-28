@@ -16,6 +16,7 @@
     enable = true;
     remotePlay.openFirewall = false;
     dedicatedServer.openFirewall = true;
+    gamescopeSession.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
