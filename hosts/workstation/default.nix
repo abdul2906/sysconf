@@ -32,12 +32,6 @@
   networking = {
     hostName = "workstation";
     enableIPv6 = false;
-    nameservers = [ "9.9.9.9" ];
-    defaultGateway = "192.168.2.1";
-    interfaces.enp34s0.ipv4.addresses = [{
-      address = "192.168.2.68";
-      prefixLength = 24;
-    }];
   };
 
   time.timeZone = "Europe/Berlin";
