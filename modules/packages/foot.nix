@@ -6,7 +6,7 @@
       enable = true;
       settings = {
         main = {
-          pad = "6x6 center";
+          pad = "2x2 center";
           font = "Go Mono Nerd Font:size=12";
         };
 

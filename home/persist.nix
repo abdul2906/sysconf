@@ -3,16 +3,13 @@
 {
   environment.persistence."/nix/persist".users.hu = {
     directories = [
-       # Inspired by
-       # https://github.com/roboyoshi/datacurator-filetree/
-       "archives"
-       "audio"
-       "documents"
-       "images"
-       "games"
-       "literature"
-       "software"
-       "video"
+      "archives"
+      "documents"
+      "programming"
+      "source"
+      "games"
+      "images"
+      "videos"
 
       # Program files
       { directory = ".gnupg"; mode = "0700"; } 
