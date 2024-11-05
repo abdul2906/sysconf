@@ -80,7 +80,7 @@
       profiles.shaga = {
         isDefault = true;
         search = {
-          force = false;
+          force = true;
           default = "Kagi";
           order = [ "Kagi" "Gruble" "Nix Packages" "Nix Options" "Home-manager options" ];
           engines = {
