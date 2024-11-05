@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   environment.persistence."/nix/persist".users.hu.directories = [
@@ -27,10 +27,9 @@
     protontricks
   ];
 
-  # Minecraft server
-  networking.firewall = {
-    allowedTCPPorts = [ 25565 ];
-    allowedUDPPorts = [ 25565 ];
-  };
+  imports = [ inputs.aagl.nixosModules.default ];
+  nix.settings = inputs.aagl.nixConfig;
+
+  programs.anime-game-launcher.enable = true;
 }
 

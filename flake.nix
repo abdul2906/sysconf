@@ -15,6 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { 
@@ -23,6 +28,7 @@
     home-manager,
     nur,
     plasma-manager,
+    aagl,
     ...
   } @ inputs: let
     lib = nixpkgs.lib.extend (final: prev: 
