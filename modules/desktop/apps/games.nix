@@ -5,6 +5,7 @@
     ".steam"
     ".local/share/Steam"
     ".local/share/honkers-railway-launcher"
+    ".local/share/anime-game-launcher"
     ".local/share/PrismLauncher"
     ".xlcore"
     ".local/share/Euro Truck Simulator 2"
