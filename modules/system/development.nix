@@ -8,6 +8,7 @@
 
   environment.systemPackages = with pkgs; [
     wireshark
+    seer
   ];
 
   users.users.hu.extraGroups = [ "wireshark" ];
