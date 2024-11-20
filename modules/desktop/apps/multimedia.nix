@@ -27,6 +27,7 @@
     gimp
     inkscape
     krita
+    tidal-hifi
   ];
 
   hardware.opentabletdriver = {
