@@ -3,6 +3,7 @@
 {
   environment.persistence."/nix/persist".users.hu.directories = [
     ".config/OpenTabletDriver"
+    ".config/tidal-hifi"
   ];
 
   environment.systemPackages = with pkgs; [
