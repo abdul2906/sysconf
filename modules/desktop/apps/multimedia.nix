@@ -29,6 +29,8 @@
     inkscape
     krita
     tidal-hifi
+    blender
+    obs-studio
   ];
 
   hardware.opentabletdriver = {
