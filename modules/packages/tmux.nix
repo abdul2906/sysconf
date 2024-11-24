@@ -9,6 +9,9 @@
       tmuxPlugins.resurrect
     ];
     extraConfig = ''
+      # Enable mouse
+      setw -g mouse on
+
       # Neovim
       set-option -sg escape-time 10
       set-option -g focus-events on
