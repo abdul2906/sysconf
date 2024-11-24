@@ -15,6 +15,7 @@
     ../../modules/packages/firefox.nix
     ../../modules/packages/zsh.nix
     ../../modules/packages/fastfetch.nix
+    ../../modules/packages/tmux.nix
   ];
 
   boot = {
