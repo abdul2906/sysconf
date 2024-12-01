@@ -11,6 +11,12 @@ in {
           name = "caem"
           signingKey = "E50FC66B5062070DC462661C69A830D03203405F"
 
+        [gpg]
+          program = "${pkgs.gnupg}/bin/gpg2"
+
+        [commit]
+          gpgSign = true
+
         [tag]
           gpgSign = true
 
@@ -28,9 +34,6 @@ in {
 
     home.file."/home/hu/.config/git/config" = {
       text = ''
-        [gpg]
-          program = "${pkgs.gnupg}/bin/gpg2"
-
         [includeIf "gitdir:~/programming/personal/**"]
           path = ~/.config/git/personal
 
