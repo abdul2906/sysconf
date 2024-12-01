@@ -9,7 +9,6 @@
     ../../modules/desktop/environments/river.nix
     ../../modules/system/basic.nix
     ../../modules/system/security.nix
-    ../../modules/desktop/apps/office.nix
     ../../modules/desktop/apps/communication.nix
     ../../modules/desktop/apps/multimedia.nix
     ../../modules/system/development.nix
