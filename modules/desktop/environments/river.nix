@@ -10,9 +10,9 @@
     (final: prev: {
       sandbar = prev.sandbar.overrideAttrs (old: {
         src = prev.fetchFromGitHub {
-          owner = "c4em";
+          owner = "kolunmi";
           repo = "sandbar";
-          rev = "45a8b6aa20066f1136c9acb7526fa98f208a74b6";
+          rev = "e64a8b788d086cdf4ec44b51e62bdc7b6b5f8165";
           hash = "sha256-dNYYlm5CEdnvLjskrPJgquptIQpYgU+gxOu+bt+7sbw=";
         };
       });
