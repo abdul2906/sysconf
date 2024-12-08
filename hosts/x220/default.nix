@@ -18,6 +18,8 @@
     ../../modules/packages/tmux.nix
   ];
 
+  hardware.bluetooth.enable = true;
+
   boot = {
     loader.grub = {
       enable = true;
