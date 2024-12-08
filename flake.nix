@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nur.url = "github:nix-community/NUR";
     impermanence.url = "github:nix-community/impermanence";
 
     home-manager = {
@@ -26,7 +25,6 @@
     nixpkgs,
     impermanence,
     home-manager,
-    nur,
     plasma-manager,
     aagl,
     ...
@@ -39,13 +37,10 @@
       modules = [
         home-manager.nixosModules.home-manager {
           home-manager.sharedModules = [ 
-            nur.hmModules.nur
             plasma-manager.homeManagerModules.plasma-manager
           ];
         }
-
         impermanence.nixosModules.impermanence
-        nur.nixosModules.nur
       ];
       nixpkgs = nixpkgs;
       inputs = inputs;
