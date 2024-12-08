@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   ugp = "/nix/config/secrets/git_uni";
@@ -28,9 +28,9 @@ in {
       '';
     };
 
-    home.file."/home/hu/.config/git/uni" = (lib.mkIf (builtins.pathExists ugp) {
-      source = "/nix/config/secrets/git_uni";
-    });
+    home.file."/home/hu/.config/git/uni" = {
+      source = ugp;
+    };
 
     home.file."/home/hu/.config/git/config" = {
       text = ''
@@ -40,13 +40,9 @@ in {
         [includeIf "gitdir:~/programming/forks/**"]
           path = ~/.config/git/personal
 
-      '' + (if builtins.pathExists ugp then ''
         [includeIf "gitdir:~/programming/uni/**"]
           path = ~/.config/git/uni
-
-      '' else ''
-        # Uni config omitted
-      '');
+      '';
     };
   };
 }
