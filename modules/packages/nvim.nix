@@ -18,10 +18,12 @@
         lua-language-server
         nodePackages.intelephense
         nodePackages.typescript-language-server
-        ccls
+        (llvmPackages_19.clang-tools.override {
+          enableLibcxx = true;
+        })
         ripgrep
         nil
-        gcc
+        gcc14
         basedpyright
         rust-analyzer
         zathura
