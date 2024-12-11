@@ -21,6 +21,7 @@
         (llvmPackages_19.clang-tools.override {
           enableLibcxx = true;
         })
+        ccls
         ripgrep
         nil
         gcc14
