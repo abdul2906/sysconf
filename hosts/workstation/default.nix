@@ -89,7 +89,7 @@
     '';
   };
 
-  nixpkgs.config.cudaSupport = true;
+  # nixpkgs.config.cudaSupport = true;
 
   system.stateVersion = "23.11";
 }
