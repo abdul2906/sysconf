@@ -14,8 +14,6 @@
       home.username = "hu";
       home.homeDirectory = "/home/hu";
       home.stateVersion = config.system.stateVersion;
-
-      xdg.enable = true;
     };
   };
 

@@ -19,7 +19,6 @@ in {
   ];
 
   environment.persistence."/nix/persist".users.hu.directories = [
-    # https://github.com/nix-community/plasma-manager/issues/172
     ".local/share/konsole"
     ".local/share/kwalletd"
     ".local/share/baloo"
@@ -28,7 +27,7 @@ in {
 
   environment.persistence."/nix/persist".users.hu.files = [
     ".config/konsolerc"
-    ".config/kwinoutputconfig.json"
+    ".config/kwinoutputconfig.json" # https://github.com/nix-community/plasma-manager/issues/172
     ".local/state/konsolestaterc"
   ];
 
@@ -41,7 +40,6 @@ in {
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     NVD_BACKEND = "direct";
-    MOZ_DISABLE_RDD_SANDBOX = 1;
     NIXOS_OZONE_WL = 1;
   };
 
@@ -65,6 +63,7 @@ in {
       background=${sddm-background-drv}
     '')
     networkmanager-openvpn
+    wl-clipboard
   ];
 
   home-manager.users.hu = {
@@ -74,7 +73,9 @@ in {
       };
     };
 
-    gtk = { enable = true;
+    gtk = {
+      gtk2.configLocation = "/home/hu/.config/gtk-2.0/gtkrc";
+      enable = true;
       theme = {
         name = "Breeze";
         package = pkgs.kdePackages.breeze-gtk;
@@ -90,7 +91,7 @@ in {
 
       panels = [
         {
-          location = "bottom";
+          location = "left";
           floating = true;
           widgets = [
             {
@@ -114,6 +115,7 @@ in {
               digitalClock = {
                 calendar.firstDayOfWeek = "monday";
                 time.format = "24h";
+                date.enable = false;
               };
             }
             "org.kde.plasma.showdesktop"

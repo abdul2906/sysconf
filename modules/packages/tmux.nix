@@ -15,6 +15,8 @@
       # Neovim
       set-option -sg escape-time 10
       set-option -g focus-events on
+      # https://stackoverflow.com/questions/60309665/neovim-colorscheme-does-not-look-right-when-using-nvim-inside-tmux#comment124479399_60313682
+      set-option -ga terminal-overrides ",xterm-256color:Tc"
 
       # vi mode
       set -g mode-keys vi
