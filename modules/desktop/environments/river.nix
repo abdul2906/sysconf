@@ -260,7 +260,7 @@
         #!/usr/bin/env sh
 
         if [ -n "$(pidof wf-recorder)" ]; then
-          kill -s SIGINT $(pidof wf-recorder)
+          pkill --signal=SIGINT wf-recorder
           notify-send "Screencast saved" "$(cat "$HOME/.cache/last_screencast")"
           wl-copy < "$(cat "$HOME/.cache/last_screencast")"
           exit 0
