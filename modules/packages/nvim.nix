@@ -36,6 +36,8 @@
         texlab
         haskell-language-server
         rustc
+        shellcheck
+        bash-language-server
       ];
     };
 
