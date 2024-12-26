@@ -9,6 +9,7 @@
   environment.systemPackages = with pkgs; [
     wireshark
     seer
+    mars-mips
   ];
 
   users.users.hu.extraGroups = [ "wireshark" ];
