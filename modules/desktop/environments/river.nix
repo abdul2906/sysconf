@@ -33,7 +33,6 @@
     grim
     libnotify
     seahorse
-    pcmanfm
   ];
 
   environment.sessionVariables = {
