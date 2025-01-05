@@ -19,14 +19,12 @@ in {
   ];
 
   environment.persistence."/nix/persist".users.hu.directories = [
-    ".local/share/konsole"
     ".local/share/kwalletd"
     ".local/share/baloo"
     ".local/share/dolphin"
   ];
 
   environment.persistence."/nix/persist".users.hu.files = [
-    ".config/konsolerc"
     ".config/kwinoutputconfig.json" # https://github.com/nix-community/plasma-manager/issues/172
     ".local/state/konsolestaterc"
   ];
@@ -82,6 +80,24 @@ in {
       };
     };
 
+    programs.konsole = {
+      enable = true;
+      defaultProfile = "custom";
+      customColorSchemes = {
+        "custom" = ../../packages/konsole/custom.colorscheme;
+      };
+      profiles = {
+        custom = {
+          name = "custom";
+          colorScheme = "custom";
+          font = {
+            name = "Go Mono Nerd Font";
+            size = 12; 
+          };
+        };
+      };
+    };
+
     programs.plasma = {
       enable = true;
       workspace = {
@@ -99,7 +115,6 @@ in {
                 icon = "nix-snowflake-white";
               };
             }
-            "org.kde.plasma.pager"
             {
               iconTasks = {
                 launchers = [
@@ -110,7 +125,13 @@ in {
               };
             }
             "org.kde.plasma.marginsseparator"
-            "org.kde.plasma.systemtray"
+            {
+              systemTray = {
+                icons = {
+                  spacing = "small";
+                };
+              };
+            }
             {
               digitalClock = {
                 calendar.firstDayOfWeek = "monday";
@@ -118,7 +139,7 @@ in {
                 date.enable = false;
               };
             }
-            "org.kde.plasma.showdesktop"
+            "org.kde.plasma.pager"
           ];
         }
       ];
