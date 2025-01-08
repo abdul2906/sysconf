@@ -2,9 +2,9 @@
 
 {
   mkHosts = {
-    modules,
     nixpkgs,
     inputs,
+    modules,
   }: builtins.listToAttrs (builtins.map (host: {
       name = host;
       value = nixpkgs.lib.nixosSystem {

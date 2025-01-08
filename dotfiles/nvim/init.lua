@@ -1,3 +1,0 @@
-require"settings"
-require"plugins"
-

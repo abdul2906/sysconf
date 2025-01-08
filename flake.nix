@@ -1,32 +1,32 @@
 {
+  description = "My NixOS configuration files.";
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     impermanence.url = "github:nix-community/impermanence";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
+    disko = {
+      url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = { 
     nixpkgs,
+    nixpkgs-unstable,
+    flake-parts,
     impermanence,
     home-manager,
-    plasma-manager,
-    aagl,
+    disko,
     ...
   } @ inputs: let
     lib = nixpkgs.lib.extend (final: prev: 
@@ -34,16 +34,11 @@
     );
   in {
     nixosConfigurations = lib.mkHosts {
-      modules = [
-        home-manager.nixosModules.home-manager {
-          home-manager.sharedModules = [ 
-            plasma-manager.homeManagerModules.plasma-manager
-          ];
-        }
-        impermanence.nixosModules.impermanence
-      ];
       nixpkgs = nixpkgs;
       inputs = inputs;
+      modules = [
+        disko.nixosModules.disko
+      ];
     };
   };
 }
