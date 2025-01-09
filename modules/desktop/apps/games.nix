@@ -11,6 +11,7 @@
     ".local/share/Euro Truck Simulator 2"
     ".local/share/osu"
     ".local/share/Colossal Order"
+    ".config/bitburner"
   ];
 
   programs.steam = {
