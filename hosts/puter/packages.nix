@@ -4,8 +4,11 @@
   imports = let
     modules = ../../modules/nixos;
   in [
-    "${modules}/hardware/nvidia"
+    "${modules}/core"
     "${modules}/hardware/audio"
+    "${modules}/hardware/gpu/nvidia"
+    "${modules}/hardware/cpu/amd"
+    "${modules}/multimedia"
   ];
 }
 
