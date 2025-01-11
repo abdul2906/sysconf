@@ -8,4 +8,6 @@
       "wheel"
     ];
   };
+
+  home-manager.users.caem = import ../../home/caem;
 }

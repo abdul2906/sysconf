@@ -9,6 +9,7 @@
     "${modules}/hardware/gpu/nvidia"
     "${modules}/hardware/cpu/amd"
     "${modules}/multimedia"
+    "${modules}/desktop/gnome"
   ];
 }
 

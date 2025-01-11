@@ -18,6 +18,11 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { 
@@ -27,6 +32,7 @@
     impermanence,
     home-manager,
     disko,
+    sops-nix,
     ...
   } @ inputs: let
     lib = nixpkgs.lib.extend (final: prev: 
@@ -36,8 +42,21 @@
     nixosConfigurations = lib.mkHosts {
       nixpkgs = nixpkgs;
       inputs = inputs;
+      user = "caem";
       modules = [
+        home-manager.nixosModules.home-manager {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {
+              inherit inputs;
+            };
+          };
+        }
+
+        impermanence.nixosModules.impermanence
         disko.nixosModules.disko
+        sops-nix.nixosModules.sops
       ];
     };
   };

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -11,12 +11,12 @@
 
   networking = {
     hostName = "puter";
-    useDHCP = true;
+    useDHCP = lib.mkDefault true;
   };
 
   boot = {
     loader = {
-      canTouchEfiVariables = true;
+      efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
         efiSupport = true;

@@ -7,6 +7,10 @@
     in
       builtins.filter (name: dirs.${name} == "directory") (builtins.attrNames dirs);
 
-  getModuleImports = builtins.attrNames (builtins.removeAttrs (builtins.readDir ./.) ["default.nix"]);
+  getModuleImports =
+    path: let
+      files = builtins.attrNames (builtins.removeAttrs (builtins.readDir path) ["default.nix"]);
+    in
+      map (file: "${path}/${file}") files;
 }
 

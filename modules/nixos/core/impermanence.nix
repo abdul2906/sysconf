@@ -25,4 +25,16 @@
     btrfs subvolume create /btrfs_tmp/root
     umount /btrfs_tmp
   '';
+
+  environment.persistence."/nix/persist" = {
+    hideMounts = true;
+    directories = [
+      "/var/log" 
+      "/var/lib/nixos"
+      "/var/lib/AccountsService"
+    ];
+    files = [
+      "/etc/machine-id"
+    ];
+  };
 }

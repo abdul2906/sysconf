@@ -5,12 +5,19 @@
     nixpkgs,
     inputs,
     modules,
+    user,
   }: builtins.listToAttrs (builtins.map (host: {
       name = host;
       value = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = modules ++ [ ../hosts/${host} ];
-        specialArgs = { inherit inputs; };
+        modules = modules ++ [
+          ../hosts/${host}
+          ../modules/nixos/user/${user}.nix
+        ];
+        specialArgs = { 
+          inherit inputs;
+          inherit lib;
+        };
       };
     }) (lib.getDirsInDir ../hosts));
 }
