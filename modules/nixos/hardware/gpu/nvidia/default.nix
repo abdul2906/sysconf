@@ -1,12 +1,11 @@
 { config, ... }:
 
 {
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
+  imports = [
+    ../graphics.nix
+  ];
 
+  hardware = {
     nvidia = {
       open = true;
       modesetting.enable = true;

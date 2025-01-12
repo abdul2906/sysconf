@@ -30,6 +30,7 @@
   };
 
   home.persistence."/nix/persist/home/caem" = {
+    allowOther = true;
     directories = [
       "documents"
       "download"

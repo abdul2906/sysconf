@@ -3,11 +3,7 @@
 {
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "GoMono"
-        ];
-      })
+      nerdfonts
       ipafont
       noto-fonts-emoji
       cantarell-fonts

@@ -11,17 +11,15 @@
   time.timeZone = "Europe/Berlin";
 
   networking = {
-    hostName = "puter";
+    hostName = "vm";
     useDHCP = lib.mkDefault true;
   };
 
   boot = {
     loader = {
-      efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
-        device = "/dev/nvme0"; # [managed by install.sh] { grub device }
-        efiSupport = true;
+        device = "/dev/nvme0n1"; # [managed by install.sh] { grub device }
         gfxmodeEfi = "1920x1080";
       };
     };
@@ -45,18 +43,6 @@
     # your root device you can add and mount them here. Added nofail so that you can
     # install this configuration on a device without it exploding when you don't have
     # these specific partitions.
-
-    "/mnt/vault" = {
-      device = "/dev/disk/by-uuid/048d175b-0e3e-4ec7-955b-3d9a45f9f237";
-      options = [ "nofail" ];
-      fsType = "xfs";
-    };
-
-    "/mnt/attic" = {
-      device = "/dev/disk/by-uuid/ec32ce36-9f53-4f44-ac8f-2c9163f0b3d7";
-      options = [ "nofail" ];
-      fsType = "xfs";
-    };
   };
 
   system.stateVersion = "24.11"; # [managed by install.sh] { state version }
