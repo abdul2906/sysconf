@@ -17,6 +17,7 @@ args_ensure_extra_arg() {
 args_ensure_is_set() {
     if [ -z "$2" ]; then
         >&2 echo "Argument '$1' is required to be set. Please consult the README or run again with --help."
+        exit 1
     fi
 }
 
@@ -51,7 +52,7 @@ args() {
             "-o" | "--host")
                 args_ensure_extra_arg "$@"
 
-                if [ ! -f "./hosts/$2" ]; then
+                if [ ! -d "./hosts/$2" ]; then
                     >&2 echo "Invalid hostname '$2'. Make sure it exists in ./hosts"
                     exit 1
                 fi
@@ -71,8 +72,19 @@ args() {
     args_ensure_is_set "--host" "$DOTNIX_HOSTNAME"
 }
 
+update_managed_values() {
+    echo "piss"
+}
+
 main () {
     args "$@"
+
+    update_managed_values
+
+    if [ "$(id -u)" != "0" ]; then
+        >&2 echo "The installation script must be run as root to work."
+        exit 1
+    fi
 }
 
 set -e
