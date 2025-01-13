@@ -5,6 +5,12 @@
   programs.virt-manager.enable = true;
 
   users.users.hu.extraGroups = [ "libvirtd" ];
+  environment.persistence."/nix/persist".directories = [
+    "/var/lib/libvirt"
+    "/var/log/libvirt"
+    "/var/cache/libvirt"
+    "/var/log/swtpm/libvirt"
+  ];
 
   home-manager.users.hu = {
     dconf.settings = {
