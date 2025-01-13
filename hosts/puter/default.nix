@@ -20,7 +20,7 @@
       efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
-        device = "/dev/nvme0"; # [managed by install.sh] { grub device }
+        device = "/dev/nvme0n1"; # [managed by install.sh]
         efiSupport = true;
         gfxmodeEfi = "1920x1080";
       };

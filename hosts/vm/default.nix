@@ -19,7 +19,7 @@
     loader = {
       grub = {
         enable = true;
-        device = "/dev/nvme0n1"; # [managed by install.sh] { grub device }
+        device = "/dev/sda"; # [managed by install.sh]
         gfxmodeEfi = "1920x1080";
       };
     };
@@ -45,6 +45,6 @@
     # these specific partitions.
   };
 
-  system.stateVersion = "24.11"; # [managed by install.sh] { state version }
+  system.stateVersion = "24.11"; # [managed by install.sh]
 }
 
