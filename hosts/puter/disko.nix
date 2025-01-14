@@ -5,7 +5,7 @@
     disk = {
       master = {
         type = "disk";
-        device = "/dev/nvme0n1"; # [managed by install.sh]
+        device = ""; # [managed by install.sh]
         content = {
           type = "gpt";
           partitions = {
@@ -30,13 +30,6 @@
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" "-L nixos" ];
-                postCreateHook = ''
-                  TMP_MNT=$(mktemp -d)
-                  MNT_PART="/dev/nvme0n1" # [managed by install.sh]
-                  mount "$MNT_PART" "$TMP_MNT" -o subvol=/
-                  trap 'umount "$TMP_MNT"; rm -rf "$TMP_MNT"' EXIT
-                  btrfs subvolume snapshot "$TMP_MNT/root" "$TMP_MNT/blank"
-                '';
                 subvolumes = {
                   "/root" = {
                     mountpoint = "/";

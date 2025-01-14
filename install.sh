@@ -32,6 +32,7 @@ args() {
                 echo "  -h|--help                           Print this and exit"
                 echo "  -d|--device [device]    (required)  The device you want to install NixOS on to"
                 echo "  -o|--host   [hostname]  (required)  The host from ./hosts you want to install"
+                echo "  -b|--build                          Build the system without installing"
                 echo ""
                 echo "origin: https://github.com/c4em/dotnix"
                 echo ""
@@ -60,6 +61,10 @@ args() {
                 DOTNIX_HOSTNAME="$2"
                 shift 2
                 ;;
+            "-b" | "--build")
+                DOTNIX_DO_ONLY_BUILD=1
+                shift 1
+                ;;
 
             *)
                 >&2 echo "Unrecognized argument '$1'. Run with --help to view accepted arguments."
@@ -68,8 +73,10 @@ args() {
         esac
     done
 
-    args_ensure_is_set "--device" "$DOTNIX_INSTALL_DEVICE"
     args_ensure_is_set "--host" "$DOTNIX_HOSTNAME"
+    if [ -z "$DOTNIX_DO_ONLY_BUILD" ]; then
+        args_ensure_is_set "--device" "$DOTNIX_INSTALL_DEVICE"
+    fi
 }
 
 sed_safe () {
@@ -77,54 +84,77 @@ sed_safe () {
     printf "%s" "$1" | sed -r 's/([\$\.\*\/\[\\^])/\\\1/g' | sed 's/[]]/\[]]/g'
 }
 
-partition_num_for_device() {
-    parent_dir="$(basename "$(dirname "$1")")"
-    if [ "$parent_dir" = "disk" ]; then
-        >&2 echo "Don't use persistent device names. They will automatically be set later on."
-        exit 1
-    elif [ "$parent_dir" = "mapper" ]; then
-        >&2 echo "lvm volumes are not supported."
-        exit 1
-    elif [ "$parent_dir" != "dev" ]; then
-        >&2 echo "Block device directory not recognized: $parent_dir"
-        exit 1
-    fi
-
-    case "$(basename "$1")" in
-        "nvme"* | "mmcblk"*)
-            printf "%s" "${1}p${2}"
-            ;;
-        "sda"* | "vda"* | "hda"*)
-            printf "%s" "${1}${2}"
-            ;;
-        *)
-            >&2 echo "Invalid block device type '$(basename "$1")'"
-            exit 1
-            ;;
-    esac
-}
-
 update_managed_values() {
     sed -i 's/\( *device = \)".*"\(; #.*\)/\1"'"$(sed_safe "$DOTNIX_INSTALL_DEVICE")"'"\2/' "./hosts/$DOTNIX_HOSTNAME/default.nix"
     sed -i 's/\( *device = \)".*"\(; #.*\)/\1"'"$(sed_safe "$DOTNIX_INSTALL_DEVICE")"'"\2/' "./hosts/$DOTNIX_HOSTNAME/disko.nix"
-    sed -i 's/\( *MNT_PART=\)".*"\( #.*\)/\1"'"$(sed_safe \
-        "$(partition_num_for_device "$DOTNIX_INSTALL_DEVICE" "2")")"'"\2/' "./hosts/$DOTNIX_HOSTNAME/disko.nix"
+    sed -i 's/\( *system.stateVersion = \)".*"\(; #.*\)/\1"'"$(sed_safe "$(nixos-version | cut -f1,2 -d '.')")"'"\2/' "./hosts/$DOTNIX_HOSTNAME/default.nix"
+}
+
+build() {
+    nix build ".#nixosConfigurations.${DOTNIX_HOSTNAME}.config.system.build.toplevel"
+}
+
+permissions() {
+    if [ "$(id -u)" = "0" ]; then
+        sudo () {
+            true
+        }
+    else
+        sudo -v
+    fi
+}
+
+ensure_confirmation() {
+    printf "\e[1;31m=== ARE YOU SURE YOU WANT TO CONTINUE WITH THE INSTALLATION ===\e[0m\n\n"
+    printf "This will \e[1;31mIRREVERSIBLY\e[0m wipe all data in '%s'\n" "$DOTNIX_INSTALL_DEVICE"
+    printf "This disk contains following partitions:\n\n"
+    lsblk -o NAME,SIZE,TYPE,FSTYPE "$DOTNIX_INSTALL_DEVICE"
+    printf "\n"
+    lsblk -no NAME "$DOTNIX_INSTALL_DEVICE" | tail -n +2 | tr -cd '[:alnum:][:space:]' | xargs -I {} -- df -h "/dev/{}"
+    printf "\n"
+
+    printf "Please write 'Yes, do as I say!' to continue with the installation\n> "
+    read -r install_prompt
+    if [ "$install_prompt" != "Yes, do as I say!" ]; then
+        echo "Cancelling installation"
+        exit 0
+    else
+        DOTNIX_CONFIRM_DISK_NUKE="yes"
+    fi
+}
+
+partition_disk() {
+    if [ "$DOTNIX_CONFIRM_DISK_NUKE" = "yes" ]; then
+        sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount "./hosts/$DOTNIX_HOSTNAME/disko.nix"
+    else
+        >&2 echo "Aborted installation due to invalid state in the partitioning step."
+        exit 1
+    fi
+}
+
+generate_config() {
+    nixos-generate-config --no-filesystems --root /mnt
 }
 
 main () {
     args "$@"
+    permissions
 
-    if [ "$(id -u)" != "0" ]; then
-        >&2 echo "The installation script must be run as root to work."
-        exit 1
+    if [ -n "$DOTNIX_DO_ONLY_BUILD" ]; then
+        if [ -n "$DOTNIX_INSTALL_DEVICE" ]; then
+            update_managed_values
+        fi
+
+        build
+        exit 0
     fi
 
-    if [ ! -d /sys/firmware/efi ]; then
-        >&2 echo "Legacy BIOS is unsupported"
-        exit 1
-    fi
-
+    ensure_confirmation
     update_managed_values
+    partition_disk
+    generate_config
+
+    # todo run the install
 }
 
 set -e
