@@ -20,7 +20,7 @@
     loader = {
       grub = {
         enable = true;
-        device = "/dev/sda"; # [managed by install.sh]
+        # device = "/dev/sda"; # [managed by install.sh]
         gfxmodeEfi = "1920x1080";
       };
     };
