@@ -166,8 +166,8 @@ main () {
     update_managed_values
     partition_disk
     generate_config
-
-    # todo install
+    install
+    reboot_on_consent
 }
 
 set -e
