@@ -1,9 +1,10 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, modulesPath, ... }:
 
 {
   imports = [
     ./disko.nix
     ./packages.nix
+    (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
   users.allowNoPasswordLogin = true; /* DEBUG */
