@@ -25,7 +25,7 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" "-L nixos" ];
+                extraArgs = [ "-f" ];
                 subvolumes = {
                   "root" = {
                     mountpoint = "/";
