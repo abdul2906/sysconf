@@ -127,7 +127,6 @@ partition_disk() {
     if [ "$DOTNIX_CONFIRM_DISK_NUKE" = "yes" ]; then
         sudo nix --experimental-features 'flakes nix-command' run github:nix-community/disko/latest -- \
             --mode destroy,format,mount --yes-wipe-all-disks "./hosts/$DOTNIX_HOSTNAME/disko.nix"
-        echo "disko done"
     else
         >&2 echo "Aborted installation due to invalid state in the partitioning step."
         exit 1
@@ -135,7 +134,7 @@ partition_disk() {
 }
 
 generate_config() {
-    nixos-generate-config --no-filesystems --root /mnt
+    sudo nixos-generate-config --no-filesystems --root /mnt
 }
 
 main () {
