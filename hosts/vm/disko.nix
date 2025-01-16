@@ -23,9 +23,9 @@
             };
             root = {
               size = "100%";
-              mountpoint = "/partition-root";
               content = {
                 type = "btrfs";
+                mountpoint = "/partition-root";
                 extraArgs = [ "-f" "-L nixos" ];
                 subvolumes = {
                   "/rootfs" = {
