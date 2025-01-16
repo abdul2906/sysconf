@@ -27,7 +27,7 @@
                 type = "btrfs";
                 extraArgs = [ "-f" "-L nixos" ];
                 subvolumes = {
-                  "/root" = {
+                  "root" = {
                     mountpoint = "/";
                     mountOptions = [
                       "noatime"
@@ -35,7 +35,7 @@
                     ];
                   };
 
-                  "/nix" = {
+                  "nix" = {
                     mountpoint = "/nix";
                     mountOptions = [
                       "noatime"
