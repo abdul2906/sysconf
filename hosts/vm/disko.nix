@@ -23,11 +23,12 @@
             };
             root = {
               size = "100%";
+              mountpoint = "/partition-root";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
+                extraArgs = [ "-f" "-L nixos" ];
                 subvolumes = {
-                  "root" = {
+                  "/rootfs" = {
                     mountpoint = "/";
                     mountOptions = [
                       "noatime"
@@ -35,7 +36,7 @@
                     ];
                   };
 
-                  "nix" = {
+                  "/nix" = {
                     mountpoint = "/nix";
                     mountOptions = [
                       "noatime"
