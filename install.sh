@@ -137,6 +137,18 @@ generate_config() {
     sudo nixos-generate-config --no-filesystems --root /mnt
 }
 
+install() {
+    sudo nixos-install
+}
+
+reboot_on_consent() {
+    printf "\n\nInstallation complete. Would you like to reboot?\n[y/n] >"
+    read -r do_reboot
+    if [ "$do_reboot" = "y" ] || [ "$do_reboot" = "Y" ]; then
+        sudo reboot
+    fi
+}
+
 main () {
     args "$@"
     permissions
