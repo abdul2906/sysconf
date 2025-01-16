@@ -141,15 +141,36 @@ install() {
     sudo nixos-install --flake ".#$DOTNIX_HOSTNAME"
 }
 
+copy_files_to_new_install() {
+    username="$(grep user ./flake.nix | sed -e 's/.*\(.*\).*/\1/')"
+    cp -vr . /mnt/nix/config
+    mkdir -p "/mnt/nix/persist/home/$username/programming"
+    ln -svf /nix/config "/mnt/nix/persist/home/$username/programming/dotnix"
+}
+
 reboot_on_consent() {
-    printf "\n\nWould you like to reboot?\n[y/n] > "
+    printf "\n\nInstallation finished. Would you like to reboot?\n[y/n] > "
     read -r do_reboot
     if [ "$do_reboot" = "y" ] || [ "$do_reboot" = "Y" ]; then
         sudo reboot
     fi
 }
 
+ensure_shell() {
+    if [ -z "$IN_NIX_SHELL" ]; then
+        echo "Restarting script in nix-shell environment."
+        exec nix-shell shell.nix --run "bash $0 $*"
+    fi
+}
+
+generate_age_keys() {
+    mkdir -vp ~/.config/sops/age
+    age-keygen -o ~/.config/sops/age/keys.txt
+}
+
 main () {
+    ensure_shell "$@"
+
     args "$@"
     permissions
 
@@ -167,6 +188,7 @@ main () {
     partition_disk
     generate_config
     install
+    copy_files_to_new_install
     reboot_on_consent
 }
 
