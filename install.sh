@@ -125,7 +125,7 @@ ensure_confirmation() {
 
 partition_disk() {
     if [ "$DOTNIX_CONFIRM_DISK_NUKE" = "yes" ]; then
-        sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount "./hosts/$DOTNIX_HOSTNAME/disko.nix"
+        sudo nix run github:nix-community/disko/latest -- --mode destroy,format,mount --yes-wipe-all-disks "./hosts/$DOTNIX_HOSTNAME/disko.nix"
     else
         >&2 echo "Aborted installation due to invalid state in the partitioning step."
         exit 1
@@ -154,7 +154,7 @@ main () {
     partition_disk
     generate_config
 
-    # todo run the install
+    # todo install
 }
 
 set -e

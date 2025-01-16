@@ -9,20 +9,16 @@
         content = {
           type = "gpt";
           partitions = {
-            ESP = {
-              priority = 1;
-              name = "efi";
-              start = "1M";
-              end = "1024M";
-              type = "EF00";
+            grub_mbr = {
+              size = "1M";
+              type = "EF02"; # for grub MBR
+            };
+            boot = {
+              size = "1G";
               content = {
                 type = "filesystem";
-                format = "vfat";
+                format = "ext4";
                 mountpoint = "/boot";
-                mountOptions = [
-                  "umask=0077"
-                  "noatime"
-                ];
               };
             };
             root = {
