@@ -138,7 +138,7 @@ generate_config() {
 }
 
 install() {
-    sudo nixos-install
+    sudo nixos-install --flake ".#$DOTNIX_HOSTNAME"
 }
 
 reboot_on_consent() {
