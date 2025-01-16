@@ -20,7 +20,6 @@
       efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
-        device = ""; # [managed by install.sh]
         efiSupport = true;
         gfxmodeEfi = "1920x1080";
       };

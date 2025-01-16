@@ -142,7 +142,7 @@ install() {
 }
 
 reboot_on_consent() {
-    printf "\n\nInstallation complete. Would you like to reboot?\n[y/n] >"
+    printf "\n\nWould you like to reboot?\n[y/n] > "
     read -r do_reboot
     if [ "$do_reboot" = "y" ] || [ "$do_reboot" = "Y" ]; then
         sudo reboot
