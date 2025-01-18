@@ -92,11 +92,16 @@ nix-shell # This will automatically install all dependencies from `shell.nix`
 git submodule set-url -- secrets <ssh uri to your repository>
 ```
 
-4. Adjust the configuration to your needs.
+4. Fetch your keys.txt.
+
+This step is very important, without it your system wont be able to boot. Make sure to place it in the root of
+the `secrets/` directory.
+
+5. Adjust the configuration to your needs.
 
 Information about how the configuation is structured is available in the WIP section.
 
-5. Run the installation script
+6. Run the installation script
 ```sh
 ./install.sh --host <your host> --device <the device to install NixOS on>
 ```
