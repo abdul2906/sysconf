@@ -92,7 +92,8 @@ nix-shell # This will automatically install all dependencies from `shell.nix`
 git submodule set-url -- secrets <ssh uri to your repository>
 ```
 
-3. Adjust the configuration to your needs
+3. Adjust the configuration to your needs.
+
 Information about how the configuation is structured is available in the WIP section.
 
 4. Run the installation script
