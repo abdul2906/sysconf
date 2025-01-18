@@ -44,9 +44,8 @@ EOF
 6. Create a password file for your user.
 ```sh
 mkpasswd | wl-copy # if you're on x11, replace `wl-copy` with `xclip -sel clipboard`
-sops <username>.yaml
+sops user_password.yaml
 ```
-Where `<username>` is the user set to be used in `flake.nix`.
 
 Then edit the file to look like this.
 ```yaml
