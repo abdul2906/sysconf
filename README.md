@@ -41,8 +41,29 @@ creation_rules:
 EOF
 ```
 
-?. Update the submodule to use your secrets repository.
+6. Create a password file for your user.
 ```sh
+mkpasswd | wl-copy # if you're on x11, replace `wl-copy` with `xclip -sel clipboard`
+sops <username>.yaml
+```
+Where `<username>` is the user set to be used in `flake.nix`.
+
+Then edit the file to look like this.
+```yaml
+user_password: <The pasted password from mkpasswd>
+```
+
+7. Commit and push your changes.
+```sh
+git remote add origin git@example.com:example/secrets
+git add .
+git commit -m "batman"
+git push --set-upstream origin master
+```
+
+8. Update the submodule to use your secrets repository.
+```sh
+cd <Path to the configuration repo>
 git submodule set-url -- secrets <ssh uri to your repository>
 ```
 
