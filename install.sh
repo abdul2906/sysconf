@@ -65,7 +65,9 @@ args() {
                 DOTNIX_DO_ONLY_BUILD=1
                 shift 1
                 ;;
-
+            "-k" | "--key")
+                shift 2
+                ;;
             *)
                 >&2 echo "Unrecognized argument '$1'. Run with --help to view accepted arguments."
                 exit 1
