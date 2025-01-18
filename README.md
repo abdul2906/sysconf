@@ -62,7 +62,8 @@ git commit -m "batman"
 git push --set-upstream origin master
 ```
 
-8. Back up your keys.txt
+8. Back up your keys.txt.
+
 This step is very important as you'll need to copy this file to your new installation.
 Make sure you'll be able to securely copy it to another machine, you should handle this
 file with much care as anyone who has it will be able to decrypt your secrets if the have
