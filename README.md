@@ -6,10 +6,9 @@ You need to prepare a couple things before installation due to the way secrets a
 
 ### Prepare secrets repo
 
-1. Ensure all required dependencies are present
+1. Ensure all required dependencies are present.
 ```sh
-# If you're already using Nix you can simply run this
-nix-shell -p sops age
+nix-shell -p sops age git
 ```
 
 2. Initialize your secrets repo. You can do this anywhere on your system except this repository.
@@ -29,7 +28,7 @@ echo "keys.txt" > .gitignore
 age-keygen -o ./keys.txt
 ```
 
-5. Create your sops configuration file 
+5. Create your sops configuration file.
 ```sh
 cat <<EOF > .sops.yaml
 keys:
@@ -42,7 +41,7 @@ creation_rules:
 EOF
 ```
 
-?. Update the submodule to use your repo
+?. Update the submodule to use your secrets repository.
 ```sh
 git submodule set-url -- secrets <ssh uri to your repository>
 ```
