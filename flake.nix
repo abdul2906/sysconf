@@ -44,6 +44,9 @@
       inputs = inputs;
       user = "caem";
       modules = [
+        impermanence.nixosModules.impermanence
+        disko.nixosModules.disko
+        sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager {
           home-manager = {
             useGlobalPkgs = true;
@@ -53,10 +56,6 @@
             };
           };
         }
-
-        impermanence.nixosModules.impermanence
-        disko.nixosModules.disko
-        sops-nix.nixosModules.sops
       ];
     };
   };
