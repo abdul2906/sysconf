@@ -23,6 +23,8 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    secrets.url = "path:./secrets";
   };
 
   outputs = { 
@@ -33,6 +35,7 @@
     home-manager,
     disko,
     sops-nix,
+    secrets,
     ...
   } @ inputs: let
     lib = nixpkgs.lib.extend (final: prev: 
@@ -44,6 +47,7 @@
       inputs = inputs;
       user = "caem";
       modules = [
+        secrets
         impermanence.nixosModules.impermanence
         disko.nixosModules.disko
         sops-nix.nixosModules.sops
