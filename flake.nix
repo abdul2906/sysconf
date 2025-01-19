@@ -44,7 +44,10 @@
       inputs = inputs;
       user = "caem";
       modules = [
-        ./secrets
+        (import (builtins.path {
+          path = ./secrets;
+          name = "secrets";
+        }))
         impermanence.nixosModules.impermanence
         disko.nixosModules.disko
         sops-nix.nixosModules.sops
