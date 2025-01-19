@@ -27,7 +27,8 @@
                 type = "btrfs";
                 extraArgs = [ "-f" "-L nixos" ];
                 subvolumes = {
-                  "/rootfs" = {
+                  /* Do not rename the root partition as it'll break impermanence */
+                  "/root" = {
                     mountpoint = "/";
                     mountOptions = [
                       "noatime"

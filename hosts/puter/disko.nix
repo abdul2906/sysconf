@@ -31,6 +31,7 @@
                 type = "btrfs";
                 extraArgs = [ "-f" "-L nixos" ];
                 subvolumes = {
+                  /* Do not rename the root partition as it'll break impermanence */
                   "/root" = {
                     mountpoint = "/";
                     mountOptions = [

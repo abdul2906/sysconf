@@ -8,6 +8,9 @@
       trusted-users = [ "@wheel" ];
       allowed-users = [ "@wheel" ];
     };
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   nixpkgs = {

@@ -36,7 +36,7 @@
       "documents"
       "download"
       "music"
-      "pictures"
+      "images"
       "videos"
       "programming"
     ];
