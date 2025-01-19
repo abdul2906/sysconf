@@ -2,7 +2,7 @@
   description = "My NixOS configuration files.";
 
   inputs = {
-    secrets.url = "ssh+git://git@git.caem.dev:caem/secrets";
+    secrets.url = "git+ssh://git@git.caem.dev:caem/secrets";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
