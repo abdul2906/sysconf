@@ -10,13 +10,13 @@ encrypted secrets to the public. You don't need to be in a NixOS livecd or
 system in order to complete this step as long as you can install all
 requirements from step 1.
 
-#### 1. Ensure all required dependencies are present.
+#### 1. Ensure all required dependencies are present
 
 ```sh
 nix-shell -p sops age git wl-clipboard
 ```
 
-#### 2. Initialize your secrets repo. You can do this anywhere on your system except this repository.
+#### 2. Initialize your secrets repo
 
 ```sh
 mkdir secrets
@@ -24,19 +24,21 @@ cd secrets
 git init
 ```
 
-#### 3. Create your gitignore. You want this to make sure that you do not accidentally push your private key.
+#### 3. Create your gitignore
+
+You want this to make sure that you do not accidentally push your private key.
 
 ```sh
 echo "keys.txt" > .gitignore
 ```
 
-#### 4. Generate your private key.
+#### 4. Generate your private key
 
 ```sh
 age-keygen -o ./keys.txt
 ```
 
-#### 5. Create your sops configuration file.
+#### 5. Create your sops configuration file
 
 ```sh
 cat <<EOF > .sops.yaml
@@ -68,13 +70,13 @@ upasswd: [The pasted password from mkpasswd]
 cat <<EOF > flake.nix
 {
   outputs = { self, ... }: {
-    path = self + "./secrets.yaml";
+    path = self + "/secrets.yaml";
   };
 }
 EOF
 ```
 
-#### 8. Commit and push your changes.
+#### 8. Commit and push your changes
 
 If your git forge supports creating the repository on push you can
 simply run the commands below, if it does not, like GitHub, create a private
@@ -87,7 +89,7 @@ git commit -m "batman"
 git push --set-upstream origin master
 ```
 
-#### 9. Back up your keys.txt.
+#### 9. Back up your keys.txt
 
 **THIS STEP IS VERY IMPORTANT**
 
