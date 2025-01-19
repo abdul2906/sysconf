@@ -158,16 +158,7 @@ reboot_on_consent() {
     fi
 }
 
-ensure_shell() {
-    if [ -z "$IN_NIX_SHELL" ]; then
-        echo "Restarting script in nix-shell environment."
-        exec nix-shell shell.nix --run "bash $0 $*"
-    fi
-}
-
 main () {
-    ensure_shell "$@"
-
     args "$@"
     permissions
 
