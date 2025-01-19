@@ -31,7 +31,7 @@
   };
 
   sops = {
-    defaultSopsFile = builtins.trace inputs.secrets.path;
+    defaultSopsFile = inputs.secrets.path;
     age.keyFile = "/nix/config/keys.txt";
   };
 }
