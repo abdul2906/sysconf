@@ -133,7 +133,7 @@ partition_disk() {
 }
 
 install() {
-    sudo nixos-install --flake --no-root-passwd ".#$DOTNIX_HOSTNAME"
+    sudo nixos-install --no-root-passwd --flake ".#$DOTNIX_HOSTNAME"
 }
 
 copy_files_to_new_install() {
