@@ -3,7 +3,8 @@
 {
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
-  ] ++ lib.getModuleImports ./.;
+    ./packages.nix
+  ];
 
   home = {
     username = "caem";
