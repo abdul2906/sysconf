@@ -1,6 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
+  sops.secrets.upasswd = {
+    neededForUsers = true;
+    sopsFile = inputs.secrets.paths.upasswd;
+  };
+
   users.users.caem = {
     isNormalUser = true;
     shell = pkgs.zsh;

@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ ... }:
 
 {
   programs.gnupg.agent = {
@@ -30,8 +30,5 @@
     mutableUsers = false;
   };
 
-  sops = {
-    defaultSopsFile = lib.mkFirst inputs.secrets.path;
-    age.keyFile = "/nix/config/keys.txt";
-  };
+  sops.age.keyFile = "/nix/config/keys.txt";
 }
