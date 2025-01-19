@@ -24,5 +24,14 @@
     gnome-text-editor
     gnome-tour
     gnome-bluetooth
+    gnome-music
+    gnome-maps
+    gnome-contacts
+    gnome-calendar
+    gnome-connections
+  ];
+
+  environment.systemPackages = with pkgs; [
+    ghostty
   ];
 }

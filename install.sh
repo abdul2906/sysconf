@@ -132,19 +132,22 @@ partition_disk() {
     fi
 }
 
-generate_config() {
-    sudo nixos-generate-config --no-filesystems --root /mnt
-}
-
 install() {
-    sudo nixos-install --flake ".#$DOTNIX_HOSTNAME"
+    sudo nixos-install --flake --no-root-passwd ".#$DOTNIX_HOSTNAME"
 }
 
 copy_files_to_new_install() {
     username="$(grep user ./flake.nix | sed -e 's/.*\(.*\).*/\1/')"
-    cp -vr . /mnt/nix/config
-    mkdir -p "/mnt/nix/persist/home/$username/programming"
-    ln -svf /nix/config "/mnt/nix/persist/home/$username/programming/dotnix"
+    if [ -z "$username" ]; then
+        >&2 echo "Cannot determine username"
+        exit 1
+    fi
+
+    sudo cp -vr . /mnt/nix/config
+    sudo mkdir -p "/mnt/nix/persist/home/$username/programming"
+    sudo ln -svf /nix/config "/mnt/nix/persist/home/$username/programming/dotnix"
+    sudo chown -R 1000:100 "/mnt/nix/persist/home/$username"
+    sudo chown -R 1000:100 "/mnt/nix/config"
 }
 
 reboot_on_consent() {
@@ -160,11 +163,6 @@ ensure_shell() {
         echo "Restarting script in nix-shell environment."
         exec nix-shell shell.nix --run "bash $0 $*"
     fi
-}
-
-generate_age_keys() {
-    mkdir -vp ~/.config/sops/age
-    age-keygen -o ~/.config/sops/age/keys.txt
 }
 
 main () {
@@ -185,9 +183,8 @@ main () {
     ensure_confirmation
     update_managed_values
     partition_disk
-    generate_config
-    install
     copy_files_to_new_install
+    install
     reboot_on_consent
 }
 

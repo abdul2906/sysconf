@@ -11,6 +11,7 @@
     stateVersion = "24.11";
   };
 
+  home.file."${config.xdg.configHome}/user-dirs.dirs".force = lib.mkForce true;
   xdg = {
     enable = true;
     userDirs = {

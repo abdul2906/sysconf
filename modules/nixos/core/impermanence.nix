@@ -1,6 +1,9 @@
 { config, lib, ... }:
 
 {
+  /* Required to be able to allowOther on user persisted directories */
+  programs.fuse.userAllowOther = true;
+
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
     mount "${config.fileSystems."/".device}" /btrfs_tmp

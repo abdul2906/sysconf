@@ -29,4 +29,6 @@
     users.root.hashedPassword = "!";
     mutableUsers = false;
   };
+
+  sops.age.keyFile = "/nix/config/secrets/keys.txt";
 }
