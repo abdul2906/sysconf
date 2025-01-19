@@ -134,9 +134,9 @@ partition_disk() {
 
 install() {
     sudo sh -c '\
-        eval "$(ssh-agent -s)"\
-        ssh-add "/root/.ssh/*.pub"\
-        nixos-install --no-root-passwd --flake ".#$DOTNIX_HOSTNAME"\
+        eval "$(ssh-agent -s)";\
+        ssh-add "/root/.ssh/*.pub";\
+        nixos-install --no-root-passwd --flake ".#$DOTNIX_HOSTNAME";\
     '
 }
 
