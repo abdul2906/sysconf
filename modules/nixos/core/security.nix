@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   programs.gnupg.agent = {
@@ -30,5 +30,8 @@
     mutableUsers = false;
   };
 
-  sops.age.keyFile = "/nix/config/secrets/keys.txt";
+  sops = {
+    defaultSopsFile = inputs.secrets.path;
+    age.keyFile = "/nix/config/keys.txt";
+  };
 }

@@ -2,6 +2,8 @@
   description = "My NixOS configuration files.";
 
   inputs = {
+    secrets.url = "ssh+git://git@git.caem.dev:caem/secrets";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -33,6 +35,7 @@
     home-manager,
     disko,
     sops-nix,
+    secrets,
     ...
   } @ inputs: let
     lib = nixpkgs.lib.extend (final: prev: 
@@ -44,10 +47,6 @@
       inputs = inputs;
       user = "caem";
       modules = [
-        (import (builtins.path {
-          path = ./secrets;
-          name = "secrets";
-        }))
         impermanence.nixosModules.impermanence
         disko.nixosModules.disko
         sops-nix.nixosModules.sops

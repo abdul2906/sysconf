@@ -2,35 +2,42 @@
 
 ## Installation
 
-### Prerequisites
+### Setting up your secrets repository 
 
-You need to prepare a couple things before installation due to the way secrets are managed.
+This step is required to install the system as it is built around nix-sops
+with encrypted files in a private repository in order to not expose even the
+encrypted secrets to the public. You don't need to be in a NixOS livecd or
+system in order to complete this step as long as you can install all
+requirements from step 1.
 
-#### Prepare secrets repo
+#### 1. Ensure all required dependencies are present.
 
-1. Ensure all required dependencies are present.
 ```sh
-nix-shell -p sops age git
+nix-shell -p sops age git wl-clipboard
 ```
 
-2. Initialize your secrets repo. You can do this anywhere on your system except this repository.
+#### 2. Initialize your secrets repo. You can do this anywhere on your system except this repository.
+
 ```sh
 mkdir secrets
 cd secrets
 git init
 ```
 
-3. Create your gitignore. You want this to make sure that you do not accidentally push your private key.
+#### 3. Create your gitignore. You want this to make sure that you do not accidentally push your private key.
+
 ```sh
 echo "keys.txt" > .gitignore
 ```
 
-4. Generate your private key.
+#### 4. Generate your private key.
+
 ```sh
 age-keygen -o ./keys.txt
 ```
 
-5. Create your sops configuration file.
+#### 5. Create your sops configuration file.
+
 ```sh
 cat <<EOF > .sops.yaml
 keys:
@@ -43,68 +50,80 @@ creation_rules:
 EOF
 ```
 
-6. Create a password file for your user.
+#### 6. Create your secrets file
+
 ```sh
-mkpasswd | wl-copy # if you're on x11, replace `wl-copy` with `xclip -sel clipboard`
-sops user_password.yaml
+mkpasswd | wl-copy
+sops secrets.yaml
 ```
 
-Then edit the file to look like this.
+Then edit the file to look like this
 ```yaml
-user_password: <The pasted password from mkpasswd>
+upasswd: [The pasted password from mkpasswd]
 ```
 
-7. Commit and push your changes.
+#### 7. Create the flake to expose the secrets
+
 ```sh
-git remote add origin git@example.com:example/secrets
+cat <<EOF > flake.nix
+{
+  outputs = { self, ... }: {
+    path = self + "./secrets.yaml";
+  };
+}
+EOF
+```
+
+#### 8. Commit and push your changes.
+
+If your git forge supports creating the repository on push you can
+simply run the commands below, if it does not, like GitHub, create a private
+repository named "secrets" first before running the below commands.
+
+```sh
+git remote add origin git@git.example.net:username/secrets
 git add .
 git commit -m "batman"
 git push --set-upstream origin master
 ```
 
-8. Back up your keys.txt.
+#### 9. Back up your keys.txt.
 
-This step is very important as you'll need to copy this file to your new installation.
-Make sure you'll be able to securely copy it to another machine, you should handle this
-file with much care as anyone who has it will be able to decrypt your secrets if the have
-the files.
+**THIS STEP IS VERY IMPORTANT**
 
-### Selecting a livecd for the installation
+Back up your keys.txt in a safe location where you can later transfer it on to the livecd.
+Keep it safe afterwards as it is required to decrypt your secrets. Do not share this with
+anyone else as it'd allow them to decrypt all your secrets.
 
-The installation should work on all the NixOS livecd images, other livecds are not supported.
-Just make sure you have a way to get both your ssh key for cloning your secrets repository and
-keys.txt for decrypting your sops files.
+You also need to have a copy of your ssh private key or (preferably) deployment key to the repository
+ready to later clone your secrets repository.
 
-### Installation
+### Installing the system
 
-1. Clone this repository
+#### 0. Boot in to a livcd image
+
+Any of the official NixOS livecds will work as long as you're able securely transfer files on to
+it. Non-nixos livecds might work if you install the required tools manually but is out of scope
+of this document.
+
+#### 1. Clone this repository
+
 ```sh
 git clone https://github.com/c4em/dotnix.git
 cd dotnix
 ```
 
-2. Enter a nix-shell with all required dependencies for the installation
+#### 2. Fetch your keys.txt and ssh key
+
+Fetch your keys.txt from wherever you've stored them and **place them at the root of the configuration directory**.
+If you place them anywhere else the installation will fail. Do not move them later either.
+
+For your ssh key, place it in `~/.ssh` and create a symlink for the root user.
 ```sh
-nix-shell # This will automatically install all dependencies from `shell.nix`
+sudo ln -sf /home/nixos/.ssh /root/.ssh
 ```
 
-3. Update the submodule to use your secrets repository.
-```sh
-git submodule set-url -- secrets [ssh uri to your repository]
-git submodule sync
-git submodule update --init --remote
-```
-
-4. Fetch your keys.txt.
-
-This step is very important, without it your system wont be able to boot. Make sure to place it in the root of
-the `secrets/` directory.
-
-5. Adjust the configuration to your needs.
-
-Information about how the configuation is structured is available in the WIP section.
-
-6. Run the installation script
+#### 3. Run the installation script
 ```sh
 ./install.sh --host [your host] --device [the device to install NixOS on]
 ```
