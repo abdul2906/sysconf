@@ -137,7 +137,7 @@ install() {
 }
 
 copy_files_to_new_install() {
-    username="$(grep user ./flake.nix | sed -e 's/.*\(.*\).*/\1/')"
+    username="$(grep user ./flake.nix | sed -e 's/.*user = "\(.*\)";.*/\1/')"
     if [ -z "$username" ]; then
         >&2 echo "Cannot determine username"
         exit 1
