@@ -1,8 +1,7 @@
-{ inputs, lib, config, ... }:
+{ lib, config, ... }:
 
 {
   imports = [
-    inputs.impermanence.homeManagerModules.impermanence
     ./packages.nix
   ];
 
@@ -29,17 +28,5 @@
       publicShare = "${config.xdg.dataHome}/xdg/publicShare";
       templates = "${config.xdg.dataHome}/xdg/templates";
     };
-  };
-
-  home.persistence."/nix/persist/home/caem" = {
-    allowOther = true;
-    directories = [
-      "documents"
-      "download"
-      "music"
-      "images"
-      "videos"
-      "programming"
-    ];
   };
 }

@@ -6,6 +6,19 @@
     sopsFile = inputs.secrets.paths.upasswd;
   };
 
+  environment.persistence."/nix/persist" = {
+    users.caem = {
+      directories = [
+        "documents"
+        "download"
+        "music"
+        "images"
+        "videos"
+        "programming"
+      ];
+    };
+  };
+
   users.users.caem = {
     isNormalUser = true;
     shell = pkgs.zsh;

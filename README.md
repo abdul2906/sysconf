@@ -56,7 +56,7 @@ EOF
 
 ```sh
 mkpasswd | wl-copy
-sops secrets.yaml
+sops upasswd.yaml
 ```
 
 Then edit the file to look like this
@@ -70,7 +70,9 @@ upasswd: [The pasted password from mkpasswd]
 cat <<EOF > flake.nix
 {
   outputs = { self, ... }: {
-    path = self + "/secrets.yaml";
+    paths = {
+      upasswd = self + "/upasswd.yaml";
+    };
   };
 }
 EOF
