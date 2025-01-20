@@ -7,7 +7,7 @@
       color-scheme = "prefer-dark";
     };
     "org/gnome/desktop/input-sources" = {
-      sources = [(lib.hm.gvariant.mkTupe ["gb" "de"])];
+      sources = [(lib.hm.gvariant.mkTuple ["gb" "de"])];
     };
     "org/gnome/desktop/peripherals/mouse" = {
       accel-profile = "flat";
