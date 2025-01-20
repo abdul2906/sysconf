@@ -127,7 +127,25 @@ For your ssh key, place it in `~/.ssh` and create a symlink for the root user.
 sudo ln -sf /home/nixos/.ssh /root/.ssh
 ```
 
-#### 3. Run the installation script
+#### 3. Update the flake input for your secret
+
+In `flake.nix`, replace
+```nix
+  inputs = {
+    secrets.url = "git+ssh://git@git.caem.dev/caem/secrets";
+```
+with your url.
+```nix
+  inputs = {
+    secrets.url = "git+ssh://git@git.example.com/username/secrets";
+```
+
+#### 4. Update flake.lock (optional)
+```sh
+nix --extra-experimental-features 'nix-command flakes' flake update
+```
+
+#### 5. Run the installation script
 ```sh
 ./install.sh --host [your host] --device [the device to install NixOS on]
 ```
