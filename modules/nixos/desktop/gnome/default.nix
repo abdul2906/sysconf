@@ -2,7 +2,7 @@
 
 {
   services.xserver = {
-    enable = true;
+    enable = false;
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
   };
@@ -33,5 +33,6 @@
 
   environment.systemPackages = with pkgs; [
     ghostty
+    dconf-editor
   ];
 }
