@@ -68,6 +68,9 @@ in {
     "org/gnome/mutter" = {
       dynamic-workspaces = false;
     };
+    "org/gnome/shell/window-switcher" = {
+      current-workspace-only = true;
+    };
     "org/gnome/shell/keybindings" = {
       switch-to-application-1 = [];
       switch-to-application-2 = [];
