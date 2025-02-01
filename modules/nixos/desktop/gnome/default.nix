@@ -28,11 +28,15 @@
     gnome-contacts
     gnome-calendar
     gnome-connections
+    gnome-system-monitor
   ];
 
   environment.systemPackages = with pkgs; [
     ghostty
     dconf-editor
+    resources
+    newsflash
+    ffmpegthumbnailer
   ] ++ (with pkgs.gnomeExtensions; [
     caffeine
     accent-directories
@@ -48,6 +52,7 @@
     users."${username}" = {
       directories = [
         ".config/dconf"
+        ".local/share/news-flash"
 
         # Right now I don't really modify much here other than the tab group tab colour
         # but I might in the future want to manage these files using home-manager instead
