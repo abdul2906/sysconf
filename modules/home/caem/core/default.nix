@@ -1,0 +1,6 @@
+{ lib, ... }:
+
+{
+  imports = lib.getModuleImports ./.;
+}
+

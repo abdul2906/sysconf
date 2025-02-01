@@ -1,3 +1,4 @@
-secrets/
 dotfiles/zsh/.zcompdump
 dotfiles/nvim/lazy-lock.json
+result
+keys.txt
