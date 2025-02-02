@@ -70,6 +70,7 @@
             "/sys/bus/pci"
             "/etc/resolv.conf"
             "/etc/localtime"
+            "/etc/fonts"
             ["${intermediary-firefox-esr}/lib/firefox" "/app/etc/firefox"]
             (sloth.concat' sloth.xdgConfigHome "/dconf")
             (sloth.concat' sloth.xdgConfigHome "/gtk-2.0")
