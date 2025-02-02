@@ -1,4 +1,4 @@
-# Refer to firefox.nix in the same directory for more information and a 
+# Refer to firefox.nix in the same directory for more information and a
 # better version of this. This is barebones on purpose.
 
 # TODO: Fix file permissions. Right now it for some reason can't download anywhere.
@@ -31,10 +31,13 @@
         gpu.enable = true;
         gpu.provider = "bundle";
 
-        bubblewrap = {
+        bubblewrap = let
+          envSuffix = envKey: sloth.concat' (sloth.env envKey);
+        in {
           bind.dev = [ "/dev/shm" ];
 
           bind.rw = [
+            (envSuffix "XDG_RUNTIME_DIR" "/gvfsd")
             [(sloth.mkdir "/tmp/tor-browser") (sloth.concat' sloth.homeDir "/.tor project")]
           ];
 
