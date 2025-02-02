@@ -18,6 +18,13 @@ in {
       "image/png" = "org.gnome.Loupe.desktop";
       "image/tiff" = "org.gnome.Loupe.desktop";
       "image/webp" = "org.gnome.Loupe.desktop";
+      "video/mp4" = "umpv.desktop";
+      "video/mpeg" = "umpv.desktop";
+      "video/ogg" = "umpv.desktop";
+      "video/webm" = "umpv.desktop";
+      "video/x-matroska" = "umpv.desktop";
+      "video/x-msvideo" = "umpv.desktop";
+      "video/quicktime" = "umpv.desktop";
     };
   };
 
