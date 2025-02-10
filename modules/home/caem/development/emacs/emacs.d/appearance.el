@@ -10,9 +10,15 @@
 (add-to-list 'default-frame-alist
 	     '(font . "Go Mono Nerd Font-12"))
 
-;; Temporary theme. Replace later.
 (use-package darktooth-theme
   :ensure t
   :config
   (load-theme 'darktooth-dark t)
   (set-face-background 'hl-line "#262626")) ;; darktooth-background-0
+
+(use-package tree-sitter :ensure t)
+(use-package tree-sitter-langs :ensure t)
+(setq treesit-extra-load-path
+      (file-expand-wildcards (concat package-user-dir "/tree-sitter-langs*/bin")))
+
+(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)

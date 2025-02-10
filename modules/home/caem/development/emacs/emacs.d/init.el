@@ -18,7 +18,7 @@
 
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/") t)
+	         '("melpa" . "https://melpa.org/packages/") t)
 
 (load (expand-file-name "./appearance.el" conf-home))
 (load (expand-file-name "./annoyances.el" conf-home))
